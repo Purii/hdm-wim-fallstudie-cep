@@ -4,4 +4,4 @@
 
 ## Szenarien
 
-* Beschreibung hinzufügen *
+*Beschreibung hinzufügen*
