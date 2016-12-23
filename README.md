@@ -2,7 +2,7 @@
 
 *Hinweis: Bei diesem Projekt handelt es sich um ein Forschungsprojekt der Hochschule der Medien, Stuttgart.*
 
-## Szenarien
+## Beschreibung der Fallstudie
 
 *Beschreibung hinzufügen*
 
@@ -18,9 +18,9 @@ Als Input wird ein assoziatives Array erwartet.
 
 ```javascript
 {
-	"Zeitangabe" => {nächsten Montag, letzten Donnerstag, 12.12.2016},
-	"Projekt" => {aktuelles Projekt, HighNet, Fortschritt},
-	"Teilnehmer" => {ihr, wir, ich},
+	"Zeitangabe" => {"nächsten Montag", "letzten Donnerstag", "12.12.2016"},
+	"Projekt" => {"aktuelles Projekt", "HighNet", "Fortschritt"},
+	"Teilnehmer" => {"ihr", "wir", "ich"},
 	....
 }
 ```
