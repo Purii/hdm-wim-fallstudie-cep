@@ -1,0 +1,25 @@
+package de.hdm.wim
+
+//list any import classes here.
+import de.hdm.wim.TimeInfo;
+
+
+//declare any global variables here
+
+rule "Enrich vague TimeInfo"
+	when
+		timeInfo : TimeInfo(
+			timeInfo == "Monday"
+			|| timeInfo == "Tuesday"
+			|| timeInfo == "Wednesday"
+			|| timeInfo == "Thursday"
+			|| timeInfo == "Friday"
+			|| timeInfo == "Saturday"
+			|| timeInfo == "Sunday"
+		)
+	then
+		timeInfo.setTimeInfo("Next " + timeInfo.getTimeInfo());
+		System.out.println(timeInfo.getTimeInfo());
+		// Update to work with info further
+		update(timeInfo);
+end

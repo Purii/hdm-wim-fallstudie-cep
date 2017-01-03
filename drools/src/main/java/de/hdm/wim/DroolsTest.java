@@ -14,19 +14,32 @@ public class DroolsTest {
             // load up the knowledge base
 	        KieServices ks = KieServices.Factory.get();
     	    KieContainer kContainer = ks.getKieClasspathContainer();
-        	KieSession kSession = kContainer.newKieSession("ksession-rules");
-
-            // go !
-            Message message = new Message();
-            message.setMessage("Hello World");
-            message.setStatus(Message.HELLO);
-            kSession.insert(message);
-            kSession.fireAllRules();
+    	    execute(kContainer);
         } catch (Throwable t) {
             t.printStackTrace();
         }
     }
 
+    public static void execute( KieContainer kContainer ) {
+    	KieSession kSession = kContainer.newKieSession("ksession-rules");
+    	
+    	// TimeInfo
+    	TimeInfo timeInfo = new TimeInfo();
+    	timeInfo.setTimeInfo("Tuesday");
+    	kSession.insert(timeInfo);
+    	
+    	// Message
+    	Message message = new Message();
+        message.setMessage("Hello World");
+        message.setStatus(Message.HELLO);
+        kSession.insert(message);
+        
+    	// Go!
+    	kSession.fireAllRules();
+    	kSession.dispose();
+    }
+    
+    
     public static class Message {
 
         public static final int HELLO = 0;
