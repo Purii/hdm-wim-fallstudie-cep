@@ -18,7 +18,7 @@ public class HelloFusion {
     	    // Config in kmodule.xml
     	    KieSession kSession = kContainer.newKieSession();
     	    
-    	    List<String> tokens = Arrays.asList("current activities", "concerning", "HighNet");
+    	    List<String> tokens = Arrays.asList("current activities", "blabla", "blabla", "concerning", "HighNet", "blabla");
     	    
     	    tokens.stream().forEach(token -> { insertAndFire(kSession, token); });
     	    

@@ -9,14 +9,10 @@ declare Token
 	@role(event)
 end
 
-declare window LastEvent
-    Token() over window:length(1)
-end
-
 declare window LastEvents
-    Token() over window:length(2)
+	// Aktuelle wird mitgezaehlt
+    Token() over window:length(4)
 end
-
 
 rule "Fusion - Identify projectdocuments"
     when
@@ -36,7 +32,7 @@ rule "Fusion - Identify projectdocuments"
 end
 
 
-rule "Fusion . Recognize restriction"
+rule "Fusion - Recognize restriction"
     when
         $ml : Token(
         		prevToken != currentToken
@@ -46,21 +42,27 @@ rule "Fusion . Recognize restriction"
         		)
         		, restriction : currentToken
         	)
-        	
+        $objectEvent : Token(
+        	requestedObject == Token.PROJECTDOCUMENTS
+        ) from window LastEvents
+
     then
        	System.out.println("Await restriction!");
        	modify($ml) {
        		setPrevToken(restriction),
-       		setRestriction(restriction),
-       		setIsRestriction(true)
+       		setRequestedObject($objectEvent.getRequestedObject()),
+       		setAwaitRestriction(true)
        	}
 end
 
 rule "Fusion - Add restriction"
     when
-       $restriction : Token( isRestriction, restriction : currentToken ) from window LastEvent
-       $object : Token( requestedObject == Token.PROJECTDOCUMENTS ) from window LastEvents
+       	$object : Token( requestedObject == Token.PROJECTDOCUMENTS, awaitRestriction ) over window:length(2)
+       	&& $restriction : Token ( requestedObject != Token.PROJECTDOCUMENTS ) over window:length(1)
     then
-    	System.out.println($object.getRequestedObject() + " restricted to " + $restriction.getRestriction());
+    	modify($object) {
+    		setAwaitRestriction(false)
+    	}
+    	System.out.println($object.getRequestedObject() + " restricted to " + $restriction.getCurrentToken());
 
 end

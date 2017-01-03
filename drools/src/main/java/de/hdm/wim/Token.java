@@ -13,7 +13,7 @@ public class Token {
 	
 	private String currentToken;
 	private String prevToken;
-	private boolean isRestriction = false;
+	private boolean awaitRestriction = false;
 	private String requestedObject;
 	private String restriction;
 	
@@ -49,12 +49,12 @@ public class Token {
 		return this.requestedObject;
 	}
 	
-	public void setIsRestriction(boolean isRestriction) {
-		this.isRestriction = isRestriction;
+	public void setAwaitRestriction(boolean awaitRestriction) {
+		this.awaitRestriction = awaitRestriction;
 	}
 	
-	public boolean getIsRestriction() {
-		return this.isRestriction;
+	public boolean getAwaitRestriction() {
+		return this.awaitRestriction;
 	}
 
 	public String getRestriction() {

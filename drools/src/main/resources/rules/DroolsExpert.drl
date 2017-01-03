@@ -6,6 +6,7 @@ import de.hdm.wim.MessageListener
 
 //declare any global variables here
 
+/*
 rule "Identify projectdocuments"
     when
         // Token = "Current activities", "Documents"
@@ -53,3 +54,4 @@ rule "Add restriction"
         ml.setRestriction(restriction);
 
 end
+*/

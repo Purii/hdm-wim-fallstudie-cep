@@ -31,3 +31,9 @@ Als Input wird ein assoziatives Array erwartet.
 
 * "Aktueller Projektplan für das Projekt HighNet"
 * "Letztes Protokoll zu Projekt HighNet"
+
+
+
+## Notes
+
+* Recent Events vs. Recent Events with Tag: http://stackoverflow.com/questions/12090295/drools-get-the-3-most-recent-events
