@@ -5,18 +5,62 @@ import de.hdm.wim.Token
 
 
 //declare any global variables here
+declare Token
+	@role(event)
+end
 
+declare window LastEvent
+    Token() over window:length(1)
+end
 
+declare window LastEvents
+    Token() over window:length(2)
+end
 
 
 rule "Fusion - Identify projectdocuments"
     when
-        // Token = "Current activities", "Documents"
-        t : Token(
-        	value == "current activities"
-        	|| value == "documents"
-        )
+        $ml : Token(
+        		prevToken != currentToken
+        		&& (
+        			currentToken == "current activities"
+        			|| currentToken == "documents"
+        		)
+        		, prevToken : currentToken
+        	)
     then
-       System.out.println("Jo!");
+    	modify($ml) {
+    		setPrevToken(prevToken),
+    		setRequestedObject(Token.PROJECTDOCUMENTS)
+    	}
+end
+
+
+rule "Fusion . Recognize restriction"
+    when
+        $ml : Token(
+        		prevToken != currentToken
+        		&& (
+        			currentToken == "concerning"
+        			|| currentToken == "leading to"
+        		)
+        		, restriction : currentToken
+        	)
+        	
+    then
+       	System.out.println("Await restriction!");
+       	modify($ml) {
+       		setPrevToken(restriction),
+       		setRestriction(restriction),
+       		setIsRestriction(true)
+       	}
+end
+
+rule "Fusion - Add restriction"
+    when
+       $restriction : Token( isRestriction, restriction : currentToken ) from window LastEvent
+       $object : Token( requestedObject == Token.PROJECTDOCUMENTS ) from window LastEvents
+    then
+    	System.out.println($object.getRequestedObject() + " restricted to " + $restriction.getRestriction());
 
 end

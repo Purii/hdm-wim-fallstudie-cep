@@ -12,7 +12,6 @@ import org.kie.api.runtime.KieSession;
 public class HelloFusion {
 
 	public static final void main(String[] args) {
-        try {
             // load up the knowledge base
 	        KieServices ks = KieServices.Factory.get();
     	    KieContainer kContainer = ks.getKieClasspathContainer();
@@ -23,10 +22,8 @@ public class HelloFusion {
     	    
     	    tokens.stream().forEach(token -> { insertAndFire(kSession, token); });
     	    
+    	    kSession.dispose();
     	    System.out.println("Finished!");
-        } catch (Throwable t) {
-            t.printStackTrace();
-        }
     }
 
     private static void insertAndFire(KieSession kSession, String token) {
