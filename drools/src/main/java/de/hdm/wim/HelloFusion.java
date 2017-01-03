@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.drools.core.time.impl.PseudoClockScheduler;
-import org.kie.api.KieBaseConfiguration;
 import org.kie.api.KieServices;
-import org.kie.api.conf.EventProcessingOption;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
@@ -18,8 +16,7 @@ public class HelloFusion {
             // load up the knowledge base
 	        KieServices ks = KieServices.Factory.get();
     	    KieContainer kContainer = ks.getKieClasspathContainer();
-    	    KieBaseConfiguration config = KieServices.Factory.get().newKieBaseConfiguration();
-    	    config.setOption( EventProcessingOption.STREAM );
+    	    // Config in kmodule.xml
     	    KieSession kSession = kContainer.newKieSession();
     	    
     	    List<String> tokens = Arrays.asList("current activities", "concerning", "HighNet");
