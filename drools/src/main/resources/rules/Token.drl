@@ -1,0 +1,26 @@
+/*//created on: 03.01.2017
+package de.hdm.wim
+
+//list any import classes here.
+import de.hdm.wim.Token
+import de.hdm.wim.Facttoken
+
+
+//declare any global variables here
+
+
+
+
+rule "Identify projectdocuments"
+    when
+        // Token = "Current activities", "Documents"
+        t : Token(
+        	value == "current activities"
+        	|| value == "documents"
+        )
+    then
+       System.out.println("Jo!");
+       insert(new Facttoken(Facttoken.PROJECTDOCUMENTS)
+
+end
+*/
