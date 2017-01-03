@@ -1,6 +1,6 @@
-package com.sample
+package de.hdm.wim
  
-import com.sample.DroolsTest.Message;
+import de.hdm.wim.DroolsTest.Message;
  
 rule "Hello World"
     when
