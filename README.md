@@ -29,5 +29,5 @@ Als Input wird ein assoziatives Array erwartet.
 
 ### Output / Anfrage "semantische Repräsentation"
 
-* "Nächster Meilenstein für das Projekt HighNet"
+* "Aktueller Projektplan für das Projekt HighNet"
 * "Letztes Protokoll zu Projekt HighNet"
