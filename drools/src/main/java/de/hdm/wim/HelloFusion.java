@@ -19,11 +19,14 @@ public class HelloFusion {
     	    KieSession kSession = kContainer.newKieSession();
     	    
     	    List<String> tokens = Arrays.asList("current activities", "blabla", "blabla", "concerning", "HighNet", "blabla");
+    	    List<String> tokens2 = Arrays.asList("blabla", "make appointment", "blabla","about", "new contract", "tomorrow" );
+    	    List<String> tokens3 = Arrays.asList("blabla", "set deadline", "blabla","for debugging", "Wednesday" );
+
     	    
     	    tokens.stream().forEach(token -> { insertAndFire(kSession, token); });
     	    
     	    kSession.dispose();
-    	    System.out.println("Finished!");
+    	    System.out.println("Done!");
     }
 
     private static void insertAndFire(KieSession kSession, String token) {

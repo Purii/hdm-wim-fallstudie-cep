@@ -32,8 +32,7 @@ public class DroolsExpertMain {
     	
     	ml.updateCurrentToken("not relevant");
     	kSession.update(fh, ml);
-    	kSession.fireAllRules();
-    	
+    	kSession.fireAllRules();    	
     	
     	ml.updateCurrentToken("concerning");
     	kSession.update(fh, ml);
@@ -43,7 +42,7 @@ public class DroolsExpertMain {
     	kSession.update(fh, ml);
     	kSession.fireAllRules();
     	
-    	System.out.println("finished!");
+    	System.out.println("Done!");
     	System.out.print(ml.toString());
     	kSession.dispose();
     }
