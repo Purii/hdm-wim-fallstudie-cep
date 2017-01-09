@@ -1,27 +1,25 @@
 package de.hdm.wim
 
 //list any import classes here.
-/*import de.hdm.wim.Token
+import de.hdm.wim.ComplexToken
+import de.hdm.wim.Event
 
 //declare any global variables here
-declare Token
+declare Event
 	@role(event)
 end
 
 rule "Identify topic projectdocuments"
+	// Modify will cause infinite loop
+	lock-on-active true
     when
-        $ml : Token(
-        		prevToken != currentToken
-        		&& (
-        			currentToken == "current activities"
-        			|| currentToken == "documents"
-        		)
-        		, prevToken : currentToken
-        	)
+        Event(
+       		token == "current activities"
+        	|| token == "documents"
+        )
+        $complexToken : ComplexToken()
     then
-    	modify($ml) {
-    		setPrevToken(prevToken),
-    		setTopic(Token.PROJECTDOCUMENTS)
+    	modify($complexToken) {
+    		setTopic(ComplexToken.PROJECTDOCUMENTS)
     	}
 end
-*/

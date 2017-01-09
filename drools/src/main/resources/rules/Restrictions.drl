@@ -32,6 +32,8 @@ rule "Recognize project based restriction"
 end*/
 
 rule "Recognize project based restriction"
+    // Modify will cause infinite loop
+	lock-on-active true
     when
        	$expectRestriction : Event(
        		token == "concerning"
@@ -42,6 +44,7 @@ rule "Recognize project based restriction"
        	)
        	$complexToken : ComplexToken()
     then
-    	$complexToken.setRestrictedToProject($restriction.getToken());
-    	System.out.println("Restriction: " + $restriction.getToken());
+    	modify($complexToken) {
+    		setRestrictedToProject($restriction.getToken())
+    	}
 end

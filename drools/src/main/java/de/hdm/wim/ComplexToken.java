@@ -55,6 +55,6 @@ public class ComplexToken {
 	}
 	
 	public String toString() {
-		return "Hello!";
+		return "Get " + this.getTopic() + " restricted to project " + this.getRestrictedToProject();
 	}
 }

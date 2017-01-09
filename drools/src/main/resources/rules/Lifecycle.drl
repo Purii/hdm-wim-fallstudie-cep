@@ -11,23 +11,22 @@ import de.hdm.wim.ComplexToken
 
 
 
-rule "Your First Rule"
+rule "Start Lifecycle of ComplexToken"
 
     when
         LifecycleEvent(token == "start")
     then
+    	// Reset prev ComplexToken?
         insert(new ComplexToken());
 
 end
 
-rule "Your Second Rule"
+rule "End Lifecycle of ComplexToken"
 
     when
         LifecycleEvent(token == "end")
         $ComplexToken : ComplexToken()
     then
-    	System.out.println($ComplexToken.getRestrictedToProject());
-    	//System.out.println($ComplexToken.getTopic());
-        //actions
+    	System.out.println($ComplexToken);
 
 end
