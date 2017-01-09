@@ -28,18 +28,16 @@ rule "Recognize project based restriction"
        	)
     then
     	System.out.println("Restriction: " + $restriction.getToken());
-end
-*/
+end*/
 
 rule "Recognize project based restriction"
     when
-       	$awaitRestriction : Event(
+       	$expectRestriction : Event(
        		token == "concerning"
         	|| token == "leading to"
-       	) from window LastEvent
+       	) from window LastEvents
        	$restriction : Event(
-       		this after $awaitRestriction,
-       		this != $awaitRestriction
+       		this after $expectRestriction
        	)
     then
     	System.out.println("Restriction: " + $restriction.getToken());
