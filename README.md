@@ -8,28 +8,25 @@
 
 
 ### Sätze
-Die Anwendung hat die Aufgabe einzelne Sätze in Form einzelner Tokens zu verstehen.
-Die interpretierte Information wird anschließend an die "semantische Repräsentation" weitergeleitet, um konkrete Dokumente anzufragen.
+Die Anwendung hat die Aufgabe, Sätze in Form einzelner Tokens zu verstehen.
+Die interpretierte Information kann anschließend an die "semantische Repräsentation" weitergeleitet werden, um konkrete Dokumente anzufragen.
 
-Folgende Sätze dienen dabei als repräsentative Beispiele:
-
-* 
-
-### Input / Assoziatives Array
+### Output / Assoziatives Array
 Als Input wird ein assoziatives Array erwartet.
+Der Output ist 
 
 ```javascript
 {
 	"Zeitangabe" => {"Dienstag", "nächsten Montag", "letzten Donnerstag", "12.12.2016"},
-	"Projekt" => {"aktuelles Projekt", "HighNet", "Fortschritt"},
-	"Teilnehmer" => {"ihr", "wir", "ich"},
+	"Projekt" => {"aktuelles Projekt", "HighNet"},
+	"Themen" => {"Meilenstein", "Projektdokument"},
 	....
 }
 ```
 
-### Output / Anfrage "semantische Repräsentation"
+### Output / String
 
-* "Aktueller Projektplan für das Projekt HighNet"
+* "Aktueller Projektplan für Projekt HighNet"
 * "Letztes Protokoll zu Projekt HighNet"
 
 
