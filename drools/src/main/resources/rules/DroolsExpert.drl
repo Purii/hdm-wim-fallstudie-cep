@@ -1,12 +1,12 @@
-package de.hdm.wim
+package de.hdm.wim.expert
 
 //list any import classes here.
-import de.hdm.wim.MessageListener
+import de.hdm.wim.expert.MessageListener
 
 
 //declare any global variables here
 
-/*
+
 rule "Identify projectdocuments"
     when
         // Token = "Current activities", "Documents"
@@ -54,4 +54,3 @@ rule "Add restriction"
         ml.setRestriction(restriction);
 
 end
-*/

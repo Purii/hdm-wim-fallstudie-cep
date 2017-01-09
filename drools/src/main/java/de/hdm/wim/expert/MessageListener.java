@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.hdm.wim;
+package de.hdm.wim.expert;
 
 /**
  * @author Patrick Puritscher

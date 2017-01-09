@@ -1,4 +1,4 @@
-package de.hdm.wim;
+package de.hdm.wim.expert;
 
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
