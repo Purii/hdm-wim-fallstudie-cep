@@ -3,7 +3,7 @@ package de.hdm.wim
 //list any import classes here.
 import de.hdm.wim.Token
 
-
+/*
 //declare any global variables here
 declare Token
 	@role(event)
@@ -66,26 +66,4 @@ rule "Fusion - Add restriction"
     	System.out.println($object.getRequestedObject() + " restricted to " + $restriction.getCurrentToken());
 
 end
-
-rule "Fusion - Identify due date"
-    when
-        $ml : Token(
-        		prevToken != currentToken
-        		&& (
-        			currentToken == "concerning"
-        			|| currentToken == "leading to"
-        		)
-        		, restriction : currentToken
-        	)
-        $objectEvent : Token(
-        	requestedObject == Token.PROJECTDOCUMENTS
-        ) from window LastEvents
-
-    then
-       	System.out.println("Await restriction!");
-       	modify($ml) {
-       		setPrevToken(restriction),
-       		setRequestedObject($objectEvent.getRequestedObject()),
-       		setAwaitRestriction(true)
-       	}
-end
+*/

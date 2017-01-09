@@ -11,75 +11,50 @@ public class Token {
 
 	public static final String PROJECTDOCUMENTS = "projectdocuments";
 	
-	private String currentToken;
-	private String prevToken;
-	private boolean awaitRestriction = false;
-	private String requestedObject;
-	private String restriction;
-	
-	public Token() {}
-	public Token(String currentToken) {
-		this.setCurrentToken(currentToken);
-	}
-	
-	/**
-	 * @return the currentToken
-	 */
-	public String getCurrentToken() {
-		return currentToken;
-	}
+	private String restrictedToProject;
+	private String restrictedToTime;
+	private String topic;
 
 	/**
-	 * @param currentToken the currentToken to set
+	 * @return the topic
 	 */
-	public void setCurrentToken(String currentToken) {
-		this.currentToken = currentToken;
+	public String getTopic() {
+		return topic;
 	}
-	
-	public void updateCurrentToken(String currentToken) {
-		this.setPrevToken(this.currentToken);
-		this.setCurrentToken(currentToken);
-	}
-	
-	public void setRequestedObject(String requestedObject) {
-		this.requestedObject = requestedObject;
-	}
-	
-	public String getRequestedObject() {
-		return this.requestedObject;
-	}
-	
-	public void setAwaitRestriction(boolean awaitRestriction) {
-		this.awaitRestriction = awaitRestriction;
-	}
-	
-	public boolean getAwaitRestriction() {
-		return this.awaitRestriction;
+	/**
+	 * @param topic the topic to set
+	 */
+	public void setTopic(String topic) {
+		this.topic = topic;
 	}
 
-	public String getRestriction() {
-		return this.restriction;
+	/**
+	 * @return the restrictedToProject
+	 */
+	public String getRestrictedToProject() {
+		return restrictedToProject;
+	}
+	/**
+	 * @param restrictedToProject the restrictedToProject to set
+	 */
+	public void setRestrictedToProject(String restrictedToProject) {
+		this.restrictedToProject = restrictedToProject;
 	}
 
-	public void setRestriction(String restriction) {
-		this.restriction = restriction;
+	/**
+	 * @return the restrictedToTime
+	 */
+	public String getRestrictedToTime() {
+		return restrictedToTime;
+	}
+	/**
+	 * @param restrictedToTime the restrictedToTime to set
+	 */
+	public void setRestrictedToTime(String restrictedToTime) {
+		this.restrictedToTime = restrictedToTime;
 	}
 	
 	public String toString() {
-		return this.requestedObject + " restricted to " + this.restriction;
-	}
-
-	/**
-	 * @return the prevToken
-	 */
-	public String getPrevToken() {
-		return prevToken;
-	}
-
-	/**
-	 * @param prevToken the prevToken to set
-	 */
-	public void setPrevToken(String prevToken) {
-		this.prevToken = prevToken;
+		return "Hello!";
 	}
 }

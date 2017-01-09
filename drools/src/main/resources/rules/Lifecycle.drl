@@ -1,0 +1,33 @@
+/*//created on: 09.01.2017
+package de.hdm.wim
+
+//list any import classes here.
+import de.hdm.wim.LifecycleEvent
+import de.hdm.wim.Token
+
+
+//declare any global variables here
+
+
+
+
+rule "Your First Rule"
+
+    when
+        LifecycleEvent(token == "start")
+    then
+        insert(new Token())
+
+end
+
+rule "Your Second Rule"
+
+    when
+        LifecycleEvent(token == "end")
+        $TokenEvent : Token()
+    then
+    	System.out.println($TokenEvent.getTopic());
+        //actions
+
+end
+*/

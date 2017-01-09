@@ -1,0 +1,46 @@
+//created on: 09.01.2017
+package de.hdm.wim
+
+//list any import classes here.
+import de.hdm.wim.Event
+
+//declare any global variables here
+declare Event
+	@role(event)
+end
+
+declare window LastEvents
+	// Aktuelle wird mitgezaehlt
+    Event() over window:length(2)
+end
+
+/*
+ * Time based
+rule "Recognize project based restriction"
+    when
+       	$awaitRestriction : Event(
+       		token == "concerning"
+        	|| token == "leading to"
+       	)
+       	$restriction : Event(
+       		this after[0s, 2s] $awaitRestriction,
+       		this != $awaitRestriction
+       	)
+    then
+    	System.out.println("Restriction: " + $restriction.getToken());
+end
+*/
+
+rule "Recognize project based restriction"
+    when
+       	$awaitRestriction : Event(
+       		token == "concerning"
+        	|| token == "leading to"
+       	) from window LastEvent
+       	$restriction : Event(
+       		this after $awaitRestriction,
+       		this != $awaitRestriction
+       	)
+    then
+    	System.out.println("Restriction: " + $restriction.getToken());
+end

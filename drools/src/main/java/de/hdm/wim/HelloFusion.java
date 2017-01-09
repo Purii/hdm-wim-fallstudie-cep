@@ -18,7 +18,7 @@ public class HelloFusion {
     	    // Config in kmodule.xml
     	    KieSession kSession = kContainer.newKieSession();
     	    
-    	    List<String> tokens = Arrays.asList("current activities", "blabla", "blabla", "concerning", "HighNet", "blabla");
+    	    List<String> tokens = Arrays.asList("current activities", "blabla", "blablaBefore", "concerning", "HighNet", "blablaNext", "blablaNext2", "blablaNext3");
     	    List<String> tokens2 = Arrays.asList("blabla", "make appointment", "blabla","about", "new contract", "tomorrow" );
     	    List<String> tokens3 = Arrays.asList("blabla", "set deadline", "blabla","for debugging", "Wednesday" );
 
@@ -32,7 +32,7 @@ public class HelloFusion {
     private static void insertAndFire(KieSession kSession, String token) {
     	PseudoClockScheduler clock = kSession.getSessionClock();
     	
-    	final Token t = new Token(token);
+    	final Event t = new Event(token);
 		kSession.insert(t);
 		
 		clock.advanceTime(2, TimeUnit.SECONDS);
