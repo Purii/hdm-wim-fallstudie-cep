@@ -7,7 +7,7 @@ package de.hdm.wim;
  * @author Patrick Puritscher
  *
  */
-public class Token {
+public class ComplexToken {
 
 	public static final String PROJECTDOCUMENTS = "projectdocuments";
 	

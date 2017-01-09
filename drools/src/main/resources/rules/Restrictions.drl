@@ -2,6 +2,7 @@
 package de.hdm.wim
 
 //list any import classes here.
+import de.hdm.wim.ComplexToken
 import de.hdm.wim.Event
 
 //declare any global variables here
@@ -39,6 +40,8 @@ rule "Recognize project based restriction"
        	$restriction : Event(
        		this after $expectRestriction
        	)
+       	$complexToken : ComplexToken()
     then
+    	$complexToken.setRestrictedToProject($restriction.getToken());
     	System.out.println("Restriction: " + $restriction.getToken());
 end

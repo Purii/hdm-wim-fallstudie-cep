@@ -22,8 +22,12 @@ public class HelloFusion {
     	    List<String> tokens2 = Arrays.asList("blabla", "make appointment", "blabla","about", "new contract", "tomorrow" );
     	    List<String> tokens3 = Arrays.asList("blabla", "set deadline", "blabla","for debugging", "Wednesday" );
 
-    	    
+    	    	
+    	    insertAndFireLifecycle(kSession, "start");
+    	   
     	    tokens.stream().forEach(token -> { insertAndFire(kSession, token); });
+    	    
+    	    insertAndFireLifecycle(kSession, "end");
     	    
     	    kSession.dispose();
     	    System.out.println("Done!");
@@ -40,5 +44,9 @@ public class HelloFusion {
 		kSession.fireAllRules();
     }
     
+    private static void insertAndFireLifecycle(KieSession kSession, String token) {
+    	kSession.insert(new LifecycleEvent(token));
+ 	    kSession.fireAllRules();
+    }
 
 }
