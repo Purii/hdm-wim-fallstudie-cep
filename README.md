@@ -12,8 +12,7 @@ Die Anwendung hat die Aufgabe, Sätze in Form einzelner Tokens zu verstehen.
 Die interpretierte Information kann anschließend an die "semantische Repräsentation" weitergeleitet werden, um konkrete Dokumente anzufragen.
 
 ### Output / Assoziatives Array
-Als Input wird ein assoziatives Array erwartet.
-Der Output ist 
+Das System soll folgende Inhalte erkennen und zur weiteren Verarbeitung ausgeben können.
 
 ```javascript
 {
