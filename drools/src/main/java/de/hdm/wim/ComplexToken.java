@@ -10,6 +10,7 @@ package de.hdm.wim;
 public class ComplexToken {
 
 	public static final String PROJECTDOCUMENTS = "projectdocuments";
+	public static final String COSTDOCUMENTS = "documents about expenses";
 	
 	private String restrictedToProject;
 	private String restrictedToTime;

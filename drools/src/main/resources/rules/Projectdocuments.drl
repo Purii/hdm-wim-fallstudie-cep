@@ -23,3 +23,19 @@ rule "Identify topic projectdocuments"
     		setTopic(ComplexToken.PROJECTDOCUMENTS)
     	}
 end
+
+rule "Identify cost documents"
+	// Modify will cause infinite loop
+	lock-on-active true
+    when
+    	Event(
+    		token == "expenses"
+    		|| token == "limits"
+    		|| token == "expense"
+    	)
+    	$complexToken : ComplexToken()
+    then
+    	modify($complexToken) {
+    		setTopic(ComplexToken.COSTDOCUMENTS)
+    	}
+end

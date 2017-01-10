@@ -15,7 +15,7 @@ declare window LastEvents
     Event() over window:length(2)
 end
 
-rule "Identify 'leading to'"
+/*rule "Identify 'leading to'"
 	when
 		$prevToken : Event(
 			token == "leading"
@@ -28,7 +28,7 @@ rule "Identify 'leading to'"
 		modify($postfix) {
 			setToken("concerning");
 		}
-end
+end*/
 
 rule "Recognize project based restriction"
     // Modify will cause infinite loop

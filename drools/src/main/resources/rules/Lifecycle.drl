@@ -7,17 +7,44 @@ import de.hdm.wim.ComplexToken
 
 
 //declare any global variables here
-
-
-
+declare ComplexToken
+	@role(event)
+end
+declare window LastComplexEvent
+	// Aktuelle wird mitgezaehlt
+    ComplexToken() over window:length(1)
+end
 
 rule "Start Lifecycle of ComplexToken"
-
+	// Modify will cause infinite loop
+	lock-on-active true
     when
-        LifecycleEvent(token == "start")
+        not (LifecycleEvent(token == "start") and
+        $ComplexToken : ComplexToken(
+        	restrictedToProject != null
+        ))
+        
     then
     	// Reset prev ComplexToken?
         insert(new ComplexToken());
+        System.out.println("new Token");
+
+end
+
+rule "Start Lifecycle of ComplexToken when there is already a project"
+	// Modify will cause infinite loop
+	lock-on-active true
+    when
+        (LifecycleEvent(token == "start") and
+        $ComplexToken : ComplexToken(
+        	restrictedToProject != null
+        ))
+        
+    then
+    	ComplexToken $newComplexToken = new ComplexToken();
+    	$newComplexToken.setRestrictedToProject($ComplexToken.getRestrictedToProject());
+    	// Reset prev ComplexToken?
+        insert($newComplexToken);
 
 end
 
@@ -25,7 +52,8 @@ rule "End Lifecycle of ComplexToken"
 
     when
         LifecycleEvent(token == "end")
-        $ComplexToken : ComplexToken()
+        
+        $ComplexToken : ComplexToken() from window LastComplexEvent
     then
     	System.out.println($ComplexToken);
 
