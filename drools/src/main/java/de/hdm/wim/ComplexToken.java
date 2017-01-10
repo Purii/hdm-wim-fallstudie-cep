@@ -15,7 +15,7 @@ public class ComplexToken {
 	
 	private String restrictedToProject;
 	private String restrictedToTime;
-	private ArrayList<String> topics;
+	private ArrayList<String> topics = new ArrayList<String>();
 
 	/**
 	 * @return the topic

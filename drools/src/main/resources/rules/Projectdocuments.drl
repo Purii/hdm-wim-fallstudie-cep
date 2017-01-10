@@ -20,6 +20,6 @@ rule "Identify topic projectdocuments"
         $complexToken : ComplexToken()
     then
     	modify($complexToken) {
-    		setTopic(ComplexToken.PROJECTDOCUMENTS)
+    		addTopic(ComplexToken.PROJECTDOCUMENTS)
     	}
 end

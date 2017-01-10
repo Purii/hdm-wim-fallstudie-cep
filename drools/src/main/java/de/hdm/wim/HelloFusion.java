@@ -29,7 +29,7 @@ public class HelloFusion {
     	    List<String> tokens8 = Arrays.asList("perfect", "see", "you", "then", "bye");
     	    List<String> tokens9 = Arrays.asList("have", "a", "nice", "day", "bye");
 
-    	    
+
     	    insertAndFireLifecycle(kSession, "start");
     	   
     	    tokens.stream().forEach(token -> { insertAndFire(kSession, token); });
