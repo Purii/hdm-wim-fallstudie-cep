@@ -7,7 +7,6 @@ import de.hdm.wim.Event
 
 
 //declare any global variables here
-
 declare Event
 	@role(event)
 end
@@ -60,7 +59,7 @@ rule "Identify Google Drive"
     	}
 end
 
-rule "Identify Google Drive #2"
+rule "Translate separated Google Drive"
     when
         $prevToken : Event(
         	token == "google"
