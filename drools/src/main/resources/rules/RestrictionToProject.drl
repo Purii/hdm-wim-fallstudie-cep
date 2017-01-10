@@ -9,10 +9,17 @@ import de.hdm.wim.Event
 declare Event
 	@role(event)
 end
+declare ComplexToken
+	@role(event)
+end
 
 declare window LastEvents
 	// Aktuelle wird mitgezaehlt
     Event() over window:length(2)
+end
+
+declare window LastComplexTokenEvent
+    ComplexToken() over window:length(1)
 end
 
 rule "Identify 'leading to'"
@@ -41,7 +48,8 @@ rule "Recognize project based restriction"
        	$restriction : Event(
        		this after $expectRestriction
        	)
-       	$complexToken : ComplexToken()
+       	// Only most recent ComplexToken
+       	$complexToken : ComplexToken() from window LastComplexTokenEvent
     then
     	modify($complexToken) {
     		setRestrictedToProject($restriction.getToken())

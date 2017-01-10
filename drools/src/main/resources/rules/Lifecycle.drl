@@ -7,8 +7,13 @@ import de.hdm.wim.ComplexToken
 
 
 //declare any global variables here
+declare ComplexToken
+	@role(event)
+end
 
-
+declare window LastComplexTokenEvent
+    ComplexToken() over window:length(1)
+end
 
 
 rule "Start Lifecycle of ComplexToken"
@@ -25,8 +30,9 @@ rule "End Lifecycle of ComplexToken"
 
     when
         LifecycleEvent(token == "end")
-        $ComplexToken : ComplexToken()
+        // Only most recent ComplexToken
+       	$complexToken : ComplexToken() from window LastComplexTokenEvent
     then
-    	System.out.println($ComplexToken);
+    	System.out.println($complexToken);
 
 end

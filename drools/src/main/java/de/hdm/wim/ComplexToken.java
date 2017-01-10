@@ -57,6 +57,6 @@ public class ComplexToken {
 	}
 	
 	public String toString() {
-		return "Get " + this.getTopics().size() + " Topics restricted to project " + this.getRestrictedToProject();
+		return "Get " + String.join(", ", this.getTopics()) + " restricted to project " + this.getRestrictedToProject();
 	}
 }
