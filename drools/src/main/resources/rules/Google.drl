@@ -15,6 +15,10 @@ declare ComplexToken
 	@role(event)
 end
 
+declare window CurrentEvent
+	Event() over window:length(1)
+end
+
 declare window LastEvents
 	// Aktuelle wird mitgezaehlt
     Event() over window:length(2)
@@ -25,18 +29,49 @@ declare window LastComplexTokenEvent
 end
 
 
-
-rule "Identify topic Google Drive"
-	// Modify will cause infinite loop
-	lock-on-active true
+rule "Calendar"
+    lock-on-active true
     when
         Event(
-       		token == "google"
+       		token == "appointment"
+        	|| token == "meeting"
         )
+        $complexToken : ComplexToken() from window LastComplexTokenEvent
+    then
+        modify($complexToken) {
+    		addTopic(ComplexToken.CALENDAR);
+    	}
+end
+
+
+rule "Identify Google Drive"
+	no-loop
+    when
+        Event(
+       		token == "drive"
+       		|| token == "googledrive"
+       		|| token == "Google drive"
+        ) from window CurrentEvent
         // Only most recent ComplexToken
        	$complexToken : ComplexToken() from window LastComplexTokenEvent
     then
     	modify($complexToken) {
     		addTopic(ComplexToken.DRIVE)
+    	}
+end
+
+rule "Identify Google Drive #2"
+    when
+        $prevToken : Event(
+        	token == "google"
+        ) from window LastEvents
+        $nextToken : Event(
+       		token == "drive",
+       		this after $prevToken
+        )
+    then
+    	retract($prevToken);
+    	modify($nextToken) {
+    		setToken(ComplexToken.DRIVE);
     	}
 end
