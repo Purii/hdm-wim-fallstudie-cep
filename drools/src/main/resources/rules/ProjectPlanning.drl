@@ -29,7 +29,7 @@ end
 
 rule "Identify Milestone"
 	// Modify will cause infinite loop
-	lock-on-active true
+	no-loop
     when
         Event(
        		token == "milestone"

@@ -40,12 +40,3 @@ rule "Identify topic Google Drive"
     		addTopic(ComplexToken.DRIVE)
     	}
 end
-
-rule "Your Second Rule"
-    //include attributes such as "salience" here...
-    when
-        //conditions
-    then
-        //actions
-
-end

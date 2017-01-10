@@ -13,6 +13,10 @@ declare ComplexToken
 	@role(event)
 end
 
+declare window CurrentEvent
+	Event() over window:length(1)
+end
+
 declare window LastComplexTokenEvent
     ComplexToken() over window:length(1)
 end
@@ -24,7 +28,7 @@ rule "Identify topic projectdocuments"
         Event(
        		token == "current activities"
         	|| token == "documents"
-        )
+        ) from window CurrentEvent
         // Only most recent ComplexToken
        	$complexToken : ComplexToken() from window LastComplexTokenEvent
     then
@@ -40,25 +44,10 @@ rule "Identify cost documents"
     	Event(
     		token == "expenses"
     		|| token == "expense"
-    	)
+    	)  from window CurrentEvent
     	$complexToken : ComplexToken() from window LastComplexTokenEvent
     then
     	modify($complexToken) {
     		addTopic(ComplexToken.COSTDOCUMENTS)
-    	}
-end
-
-rule "Identify topic Google Drive"
-	// Modify will cause infinite loop
-	lock-on-active true
-    when
-        Event(
-       		token == "google"
-        )
-        // Only most recent ComplexToken
-       	$complexToken : ComplexToken() from window LastComplexTokenEvent
-    then
-    	modify($complexToken) {
-    		addTopic(ComplexToken.DRIVE)
     	}
 end
