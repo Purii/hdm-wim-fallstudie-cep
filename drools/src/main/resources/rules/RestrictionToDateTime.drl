@@ -28,7 +28,7 @@ end
 		modify($postfix) {
 			setToken("concerning");
 		}
-end*/
+end
 
 rule "Recognize project based restriction"
     // Modify will cause infinite loop
