@@ -1,7 +1,7 @@
 package de.hdm.wim
 
 //list any import classes here.
-import de.hdm.wim.ComplexToken
+import de.hdm.wim.ComplexTokenEvent
 import de.hdm.wim.Event
 
 //declare any global variables here
@@ -9,7 +9,7 @@ declare Event
 	@role(event)
 end
 
-declare ComplexToken
+declare ComplexTokenEvent
 	@role(event)
 end
 
@@ -18,7 +18,7 @@ declare window CurrentEvent
 end
 
 declare window LastComplexTokenEvent
-    ComplexToken() over window:length(1)
+    ComplexTokenEvent() over window:length(1)
 end
 
 rule "Identify topic projectdocuments"
@@ -29,11 +29,11 @@ rule "Identify topic projectdocuments"
        		token == "current activities"
         	|| token == "documents"
         ) from window CurrentEvent
-        // Only most recent ComplexToken
-       	$complexToken : ComplexToken() from window LastComplexTokenEvent
+        // Only most recent ComplexTokenEvent
+       	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
     then
-    	modify($complexToken) {
-    		addTopic(ComplexToken.PROJECTDOCUMENTS)
+    	modify($complexTokenEvent) {
+    		addTopic(ComplexTokenEvent.PROJECTDOCUMENTS)
     	}
 end
 
@@ -45,9 +45,9 @@ rule "Identify cost documents"
     		token == "expenses"
     		|| token == "expense"
     	)  from window CurrentEvent
-    	$complexToken : ComplexToken() from window LastComplexTokenEvent
+    	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
     then
-    	modify($complexToken) {
-    		addTopic(ComplexToken.COSTDOCUMENTS)
+    	modify($complexTokenEvent) {
+    		addTopic(ComplexTokenEvent.COSTDOCUMENTS)
     	}
 end

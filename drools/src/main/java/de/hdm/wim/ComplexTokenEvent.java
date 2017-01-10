@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author Patrick Puritscher
  *
  */
-public class ComplexToken {
+public class ComplexTokenEvent {
 	
 	// Information for Recommender and/or Semantic Group
 	public static final String PROJECTDOCUMENTS = "projectdocuments";

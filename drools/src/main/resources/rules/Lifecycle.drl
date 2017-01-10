@@ -3,7 +3,7 @@ package de.hdm.wim
 
 //list any import classes here.
 import de.hdm.wim.LifecycleEvent
-import de.hdm.wim.ComplexToken
+import de.hdm.wim.ComplexTokenEvent
 
 
 //declare any global variables here
@@ -12,50 +12,50 @@ declare ComplexToken
 end
 
 declare window LastComplexTokenEvent
-    ComplexToken() over window:length(1)
+    ComplexTokenEvent() over window:length(1)
 end
 
-rule "Start Lifecycle of ComplexToken"
+rule "Start Lifecycle of ComplexTokenEvent"
 	// Modify will cause infinite loop
 	lock-on-active true
     when
         LifecycleEvent(token == "start") and
-        not ($ComplexToken : ComplexToken(
+        not ($ComplexTokenEvent : ComplexTokenEvent(
         	restrictedToProject != null
         ) from window LastComplexTokenEvent)
         
     then
-        insert(new ComplexToken());
+        insert(new ComplexTokenEvent());
 
 end
 
 
-rule "Start Lifecycle of ComplexToken when there is already a project"
+rule "Start Lifecycle of ComplexTokenEvent when there is already a project"
 	// Modify will cause infinite loop
 	lock-on-active true
     when
         (LifecycleEvent(token == "start") and
-        $ComplexToken : ComplexToken(
+        $ComplexTokenEvent : ComplexTokenEvent(
         	restrictedToProject != null
         ) from window LastComplexTokenEvent)
         
     then
-    	ComplexToken $nextComplexToken = new ComplexToken();
-    	$nextComplexToken.setRestrictedToProject($ComplexToken.getRestrictedToProject());
-        insert($nextComplexToken);
+    	ComplexTokenEvent $nextComplexTokenEvent = new ComplexTokenEvent();
+    	$nextComplexTokenEvent.setRestrictedToProject($ComplexTokenEvent.getRestrictedToProject());
+        insert($nextComplexTokenEvent);
 
 end
 
 
-rule "End Lifecycle of ComplexToken"
+rule "End Lifecycle of ComplexTokenEvent"
 	// Modify will cause infinite loop
 	lock-on-active true
     when
         LifecycleEvent(token == "end")
-		// Only most recent ComplexToken
-       	$complexToken : ComplexToken() from window LastComplexTokenEvent
+		// Only most recent ComplexTokenEvent
+       	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
        	
     then
-    	System.out.println($complexToken);
+    	System.out.println($complexTokenEvent);
 
 end

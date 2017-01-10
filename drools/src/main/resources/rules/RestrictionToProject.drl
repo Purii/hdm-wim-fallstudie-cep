@@ -2,14 +2,14 @@
 package de.hdm.wim
 
 //list any import classes here.
-import de.hdm.wim.ComplexToken
+import de.hdm.wim.ComplexTokenEvent
 import de.hdm.wim.Event
 
 //declare any global variables here
 declare Event
 	@role(event)
 end
-declare ComplexToken
+declare ComplexTokenEvent
 	@role(event)
 end
 
@@ -49,10 +49,10 @@ rule "Recognize project based restriction"
        	$restriction : Event(
        		this after $expectRestriction
        	)
-       	// Only most recent ComplexToken
-       	$complexToken : ComplexToken() from window LastComplexTokenEvent
+       	// Only most recent ComplexTokenEvent
+       	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
     then
-    	modify($complexToken) {
+    	modify($complexTokenEvent) {
     		setRestrictedToProject($restriction.getToken())
     	}
 end
