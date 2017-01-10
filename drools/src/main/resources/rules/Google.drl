@@ -1,0 +1,55 @@
+//created on: 10.01.2017
+package Google
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+declare Event
+	@role(event)
+end
+declare ComplexToken
+	@role(event)
+end
+
+declare window LastEvents
+	// Aktuelle wird mitgezaehlt
+    Event() over window:length(2)
+end
+
+declare window LastComplexTokenEvent
+    ComplexToken() over window:length(1)
+end
+
+
+
+rule "Google Drive"
+
+    when
+	lock-on-active true
+    when
+       	$expectRestriction : Event(
+       		token == "google"
+        	|| token == "googledrive"
+       	) from window LastEvents
+       	$restriction : Event(
+       		this after $expectRestriction
+       	)
+    $complexToken : ComplexToken() from window LastComplexTokenEvent
+    then
+    	modify($complexToken) {
+    		setRestrictedToProject($restriction.getToken())
+    	}
+
+end
+
+rule "Your Second Rule"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+    then
+        //actions
+
+end
