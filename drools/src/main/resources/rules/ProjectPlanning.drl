@@ -14,6 +14,10 @@ declare ComplexToken
 	@role(event)
 end
 
+declare window CurrentEvent
+	Event() over window:length(1)
+end
+
 declare window LastEvents
 	// Aktuelle wird mitgezaehlt
     Event() over window:length(2)
@@ -29,7 +33,7 @@ rule "Identify Milestone"
     when
         Event(
        		token == "milestone"
-        )
+        ) from window CurrentEvent
         // Only most recent ComplexToken
        	$complexToken : ComplexToken() from window LastComplexTokenEvent
     then
@@ -40,12 +44,12 @@ end
 
 rule "Identify Tasklist"
 	// Modify will cause infinite loop
-	lock-on-active true
+	no-loop
     when
         Event(
        		token == "tasks"
        		|| token == "tasklist"
-        )
+        ) from window CurrentEvent
         // Only most recent ComplexToken
        	$complexToken : ComplexToken() from window LastComplexTokenEvent
     then
@@ -63,10 +67,9 @@ rule "Identify Tasklist #2"
        		token == "list",
        		this after $prevToken
         )
-       	$complexToken : ComplexToken() from window LastComplexTokenEvent
     then
     	retract($prevToken);
     	modify($nextToken) {
-    		setToken(ComplexToken.TASKLIST);
+    		setToken("tasks");
     	}
 end
