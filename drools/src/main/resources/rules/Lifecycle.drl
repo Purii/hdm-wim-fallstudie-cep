@@ -22,14 +22,13 @@ rule "Start Lifecycle of ComplexToken"
         LifecycleEvent(token == "start") and
         not ($ComplexToken : ComplexToken(
         	restrictedToProject != null
-        ))
+        ) from window LastComplexTokenEvent)
         
     then
-    	// Reset prev ComplexToken?
         insert(new ComplexToken());
-        System.out.println("new Token");
 
 end
+
 
 rule "Start Lifecycle of ComplexToken when there is already a project"
 	// Modify will cause infinite loop
@@ -38,18 +37,19 @@ rule "Start Lifecycle of ComplexToken when there is already a project"
         (LifecycleEvent(token == "start") and
         $ComplexToken : ComplexToken(
         	restrictedToProject != null
-        ))
+        ) from window LastComplexTokenEvent)
         
     then
     	ComplexToken $nextComplexToken = new ComplexToken();
     	$nextComplexToken.setRestrictedToProject($ComplexToken.getRestrictedToProject());
-    	// Reset prev ComplexToken?
         insert($nextComplexToken);
 
 end
 
-rule "End Lifecycle of ComplexToken"
 
+rule "End Lifecycle of ComplexToken"
+	// Modify will cause infinite loop
+	lock-on-active true
     when
         LifecycleEvent(token == "end")
 		// Only most recent ComplexToken
