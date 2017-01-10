@@ -41,11 +41,16 @@ rule "Identify topic Google Drive"
     	}
 end
 
-rule "Your Second Rule"
-    //include attributes such as "salience" here...
+rule "Calendar"
+    lock-on-active true
     when
-        //conditions
+        Event(
+       		token == "appointment"
+        	|| token == "meeting"
+        )
+        $complexToken : ComplexToken() from window LastComplexTokenEvent
     then
-        //actions
-
+        modify($complexToken) {
+    		addTopic(ComplexToken.CALENDAR);
+    	}
 end
