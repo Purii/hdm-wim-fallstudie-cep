@@ -2,7 +2,8 @@
 package Google
 
 //list any import classes here.
-
+import de.hdm.wim.ComplexToken
+import de.hdm.wim.Event
 
 
 //declare any global variables here
@@ -25,24 +26,19 @@ end
 
 
 
-rule "Google Drive"
-
-    when
+rule "Identify topic Google Drive"
+	// Modify will cause infinite loop
 	lock-on-active true
     when
-       	$expectRestriction : Event(
+        Event(
        		token == "google"
-        	|| token == "googledrive"
-       	) from window LastEvents
-       	$restriction : Event(
-       		this after $expectRestriction
-       	)
-    $complexToken : ComplexToken() from window LastComplexTokenEvent
+        )
+        // Only most recent ComplexToken
+       	$complexToken : ComplexToken() from window LastComplexTokenEvent
     then
     	modify($complexToken) {
-    		setRestrictedToProject($restriction.getToken())
+    		addTopic(ComplexToken.DRIVE)
     	}
-
 end
 
 rule "Your Second Rule"
