@@ -47,8 +47,8 @@ rule "Identify Tasklist"
 	no-loop
     when
         Event(
-       		token == "tasks"
-       		|| token == "tasklist"
+       		token == "tasklist"
+       		|| token == ComplexTokenEvent.TASKLIST
         ) from window CurrentEvent
         // Only most recent ComplexTokenEvent
        	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
@@ -70,6 +70,6 @@ rule "Identify Tasklist #2"
     then
     	retract($prevToken);
     	modify($nextToken) {
-    		setToken("tasks");
+    		setToken(ComplexTokenEvent.TASKLIST);
     	}
 end
