@@ -41,10 +41,10 @@ rule "Start Lifecycle of ComplexToken when there is already a project"
         ))
         
     then
-    	ComplexToken $newComplexToken = new ComplexToken();
-    	$newComplexToken.setRestrictedToProject($ComplexToken.getRestrictedToProject());
+    	ComplexToken $nextComplexToken = new ComplexToken();
+    	$nextComplexToken.setRestrictedToProject($ComplexToken.getRestrictedToProject());
     	// Reset prev ComplexToken?
-        insert($newComplexToken);
+        insert($nextComplexToken);
 
 end
 
