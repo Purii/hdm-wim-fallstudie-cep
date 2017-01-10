@@ -19,8 +19,8 @@ rule "Start Lifecycle of ComplexToken"
 	// Modify will cause infinite loop
 	lock-on-active true
     when
-        not (LifecycleEvent(token == "start") and
-        $ComplexToken : ComplexToken(
+        LifecycleEvent(token == "start") and
+        not ($ComplexToken : ComplexToken(
         	restrictedToProject != null
         ))
         
