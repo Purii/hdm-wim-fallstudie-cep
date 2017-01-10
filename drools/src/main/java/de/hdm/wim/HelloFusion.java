@@ -18,7 +18,8 @@ public class HelloFusion {
     	    // Config in kmodule.xml
     	    KieSession kSession = kContainer.newKieSession();
     	    
-    	    List<String> tokens = Arrays.asList("current activities", "blabla", "blablaBefore", "concerning", "HighNet", "blablaNext", "blablaNext2", "blablaNext3");
+    	    //List<String> tokens = Arrays.asList("current activities", "blabla", "blablaBefore", "concerning", "HighNet", "blablaNext", "blablaNext2", "blablaNext3");
+    	    List<String> tokens = Arrays.asList("current activities", "blabla", "blablaBefore", "leading", "to", "HighNet", "blablaNext", "blablaNext2", "blablaNext3");
     	    List<String> tokens2 = Arrays.asList("blabla", "make appointment", "blabla","about", "new contract", "tomorrow" );
     	    List<String> tokens3 = Arrays.asList("blabla", "set deadline", "blabla","for debugging", "Wednesday" );
     	    
