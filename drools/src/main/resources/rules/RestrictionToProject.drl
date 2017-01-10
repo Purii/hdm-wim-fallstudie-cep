@@ -21,7 +21,7 @@ end
 declare window LastComplexTokenEvent
     ComplexToken() over window:length(1)
 end
-
+/*
 rule "Identify 'leading to'"
 	when
 		$prevToken : Event(
@@ -35,7 +35,7 @@ rule "Identify 'leading to'"
 		modify($postfix) {
 			setToken("concerning");
 		}
-end
+end */
 
 rule "Recognize project based restriction"
     // Modify will cause infinite loop
