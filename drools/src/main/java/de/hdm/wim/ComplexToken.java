@@ -3,6 +3,8 @@
  */
 package de.hdm.wim;
 
+import java.util.ArrayList;
+
 /**
  * @author Patrick Puritscher
  *
@@ -14,19 +16,19 @@ public class ComplexToken {
 	
 	private String restrictedToProject;
 	private String restrictedToTime;
-	private String topic;
+	private ArrayList<String> topics = new ArrayList<String>();
 
 	/**
 	 * @return the topic
 	 */
-	public String getTopic() {
-		return topic;
+	public ArrayList<String> getTopics() {
+		return topics;
 	}
 	/**
 	 * @param topic the topic to set
 	 */
-	public void setTopic(String topic) {
-		this.topic = topic;
+	public void addTopic(String topic) {
+		this.topics.add(topic);
 	}
 
 	/**
@@ -56,6 +58,6 @@ public class ComplexToken {
 	}
 	
 	public String toString() {
-		return "Get " + this.getTopic() + " restricted to project " + this.getRestrictedToProject();
+		return "Get " + String.join(", ", this.getTopics()) + " restricted to project " + this.getRestrictedToProject();
 	}
 }

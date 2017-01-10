@@ -2,9 +2,7 @@ package de.hdm.wim;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import org.drools.core.time.impl.PseudoClockScheduler;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -28,32 +26,17 @@ public class HelloFusion {
     	    List<String> tokens7 = Arrays.asList("let", "me", "check", "my", "calendar", "how", "about", "next", "thursday", "at", "16", "hours", "your", "time");
     	    List<String> tokens8 = Arrays.asList("perfect", "see", "you", "then", "bye");
     	    List<String> tokens9 = Arrays.asList("have", "a", "nice", "day", "bye");
-
     	    
-    	    insertAndFireLifecycle(kSession, "start");
+    	    List<List<String>> textsList = Arrays.asList(
+    	    		tokens, tokens2, tokens3, tokens4, tokens5, tokens6, tokens7, tokens8, tokens9
+    	    );
     	   
-    	    tokens.stream().forEach(token -> { insertAndFire(kSession, token); });
-    	    
-    	    insertAndFireLifecycle(kSession, "end");
+    	    TextRunner textRunner = new TextRunner();
+    	    textRunner.setTexts(textsList);
+    	    textRunner.runAllTextArrays(kSession);
     	    
     	    kSession.dispose();
     	    System.out.println("Done!");
-    }
-
-    private static void insertAndFire(KieSession kSession, String token) {
-    	PseudoClockScheduler clock = kSession.getSessionClock();
-    	
-    	final Event t = new Event(token);
-		kSession.insert(t);
-		
-		clock.advanceTime(2, TimeUnit.SECONDS);
-		
-		kSession.fireAllRules();
-    }
-    
-    private static void insertAndFireLifecycle(KieSession kSession, String token) {
-    	kSession.insert(new LifecycleEvent(token));
- 	    kSession.fireAllRules();
     }
 
 }

@@ -9,6 +9,14 @@ declare Event
 	@role(event)
 end
 
+declare ComplexToken
+	@role(event)
+end
+
+declare window LastComplexTokenEvent
+    ComplexToken() over window:length(1)
+end
+
 rule "Identify topic projectdocuments"
 	// Modify will cause infinite loop
 	lock-on-active true
@@ -17,10 +25,11 @@ rule "Identify topic projectdocuments"
        		token == "current activities"
         	|| token == "documents"
         )
-        $complexToken : ComplexToken()
+        // Only most recent ComplexToken
+       	$complexToken : ComplexToken() from window LastComplexTokenEvent
     then
     	modify($complexToken) {
-    		setTopic(ComplexToken.PROJECTDOCUMENTS)
+    		addTopic(ComplexToken.PROJECTDOCUMENTS)
     	}
 end
 

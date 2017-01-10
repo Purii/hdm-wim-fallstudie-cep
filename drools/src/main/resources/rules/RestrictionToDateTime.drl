@@ -1,4 +1,4 @@
-//created on: 09.01.2017
+/*//created on: 10.01.2017
 package de.hdm.wim
 
 //list any import classes here.
@@ -41,9 +41,11 @@ rule "Recognize project based restriction"
        	$restriction : Event(
        		this after $expectRestriction
        	)
-       	$complexToken : ComplexToken()
+       	// Only most recent ComplexToken
+       	$complexToken : ComplexToken() over window:length(1)
     then
     	modify($complexToken) {
     		setRestrictedToProject($restriction.getToken())
     	}
 end
+*/
