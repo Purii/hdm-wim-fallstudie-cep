@@ -47,3 +47,18 @@ rule "Identify cost documents"
     		addTopic(ComplexToken.COSTDOCUMENTS)
     	}
 end
+
+rule "Identify topic Google Drive"
+	// Modify will cause infinite loop
+	lock-on-active true
+    when
+        Event(
+       		token == "google"
+        )
+        // Only most recent ComplexToken
+       	$complexToken : ComplexToken() from window LastComplexTokenEvent
+    then
+    	modify($complexToken) {
+    		addTopic(ComplexToken.DRIVE)
+    	}
+end
