@@ -42,9 +42,9 @@ rule "Identify cost documents"
     		|| token == "limits"
     		|| token == "expense"
     	)
-    	$complexToken : ComplexToken()
+    	$complexToken : ComplexToken() from window LastComplexTokenEvent
     then
     	modify($complexToken) {
-    		setTopic(ComplexToken.COSTDOCUMENTS)
+    		addTopic(ComplexToken.COSTDOCUMENTS)
     	}
 end

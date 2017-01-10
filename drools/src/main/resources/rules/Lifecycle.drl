@@ -10,18 +10,10 @@ import de.hdm.wim.ComplexToken
 declare ComplexToken
 	@role(event)
 end
-<<<<<<< HEAD
-declare window LastComplexEvent
-	// Aktuelle wird mitgezaehlt
-    ComplexToken() over window:length(1)
-end
-=======
 
 declare window LastComplexTokenEvent
     ComplexToken() over window:length(1)
 end
-
->>>>>>> origin/master
 
 rule "Start Lifecycle of ComplexToken"
 	// Modify will cause infinite loop
@@ -60,13 +52,9 @@ rule "End Lifecycle of ComplexToken"
 
     when
         LifecycleEvent(token == "end")
-<<<<<<< HEAD
-        
-        $ComplexToken : ComplexToken() from window LastComplexEvent
-=======
-        // Only most recent ComplexToken
+		// Only most recent ComplexToken
        	$complexToken : ComplexToken() from window LastComplexTokenEvent
->>>>>>> origin/master
+       	
     then
     	System.out.println($complexToken);
 
