@@ -39,7 +39,6 @@ rule "Identify cost documents"
     when
     	Event(
     		token == "expenses"
-    		|| token == "limits"
     		|| token == "expense"
     	)
     	$complexToken : ComplexToken() from window LastComplexTokenEvent

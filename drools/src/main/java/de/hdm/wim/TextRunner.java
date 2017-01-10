@@ -29,6 +29,7 @@ public class TextRunner {
 	
 	public void runAllTextArrays(KieSession kSession) {
 		this.texts.stream().forEach(text -> {
+			System.out.println("-----------");
 			insertAndFireLifecycle(kSession, "start");
 			text.stream().forEach(token -> { insertAndFire(kSession, token); });
 			insertAndFireLifecycle(kSession, "end");

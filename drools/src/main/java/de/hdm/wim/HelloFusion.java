@@ -19,9 +19,15 @@ public class HelloFusion {
     	    //List<String> tokens = Arrays.asList("current activities", "blabla", "blablaBefore", "concerning", "HighNet", "blablaNext", "blablaNext2", "blablaNext3");
     	    List<String> tokens = Arrays.asList("lets", "talk", "about", "current activities", "concerning", "HighNet", "project");
     	    List<String> tokens2 = Arrays.asList("ok", "shall", "we", "look", "at", "tasks", "leading","to", "milestone", "ahead" );
+<<<<<<< HEAD
     	    List<String> tokens3 = Arrays.asList("sure", "we", "working", "on", "network","issues", "for", "diagnosis", "module", "item 3", "task list", "blabla", "we", "will", "come up", "with", "something", "viable", "shortly");
     	    List<String> tokens4 = Arrays.asList("that sounds great", "what", "about", "expenses", "do", "you", "think", "you", "will", "be", "able", "to", "stay", "whithin", "limits", "we", "aggreed", "upon", "last week");
     	    List<String> tokens5 = Arrays.asList("that", "should", "be", "no", "problem", "i", "will", "leave", "detailed", "report", "on", "google", "drive");
+=======
+    	    List<String> tokens3 = Arrays.asList("sure", "we", "working", "on", "network","issues", "for", "diagnosis", "module", "item 3", "task", "list", "blabla", "we", "will", "come up", "with", "something", "viable", "shortly");
+    	    List<String> tokens4 = Arrays.asList("that", "sounds", "great", "what", "about", "expenses", "do", "you", "think", "you", "will", "be", "able", "to", "stay", "whithin", "limits", "we", "aggreed", "upon", "last week");
+    	    List<String> tokens5 = Arrays.asList("that", "should", "be", "no", "problem", "i", "will", "leave", "detailed", "report", "on", "google drive");
+>>>>>>> 4248126eaf6e050f8aadf222cc17959267d0d92f
     	    List<String> tokens6 = Arrays.asList("ok", "thanks", "lets", "make", "appointment", "for", "our", "next", "meeting");
     	    List<String> tokens7 = Arrays.asList("let", "me", "check", "my", "calendar", "how", "about", "next", "thursday", "at", "16", "hours", "your", "time");
     	    List<String> tokens8 = Arrays.asList("perfect", "see", "you", "then", "bye");

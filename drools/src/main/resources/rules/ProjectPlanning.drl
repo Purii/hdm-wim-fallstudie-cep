@@ -1,0 +1,72 @@
+//created on: 10.01.2017
+package de.hdm.wim
+
+//list any import classes here.
+import de.hdm.wim.ComplexToken
+import de.hdm.wim.Event
+
+//declare any global variables here
+declare Event
+	@role(event)
+end
+
+declare ComplexToken
+	@role(event)
+end
+
+declare window LastEvents
+	// Aktuelle wird mitgezaehlt
+    Event() over window:length(2)
+end
+
+declare window LastComplexTokenEvent
+    ComplexToken() over window:length(1)
+end
+
+rule "Identify Milestone"
+	// Modify will cause infinite loop
+	lock-on-active true
+    when
+        Event(
+       		token == "milestone"
+        )
+        // Only most recent ComplexToken
+       	$complexToken : ComplexToken() from window LastComplexTokenEvent
+    then
+    	modify($complexToken) {
+    		addTopic(ComplexToken.MILESTONE)
+    	}
+end
+
+rule "Identify Tasklist"
+	// Modify will cause infinite loop
+	lock-on-active true
+    when
+        Event(
+       		token == "tasks"
+       		|| token == "tasklist"
+        )
+        // Only most recent ComplexToken
+       	$complexToken : ComplexToken() from window LastComplexTokenEvent
+    then
+    	modify($complexToken) {
+    		addTopic(ComplexToken.TASKLIST)
+    	}
+end
+
+rule "Identify Tasklist #2"
+    when
+        $prevToken : Event(
+        	token == "task"
+        ) from window LastEvents
+        $nextToken : Event(
+       		token == "list",
+       		this after $prevToken
+        )
+       	$complexToken : ComplexToken() from window LastComplexTokenEvent
+    then
+    	retract($prevToken);
+    	modify($nextToken) {
+    		setToken(ComplexToken.TASKLIST);
+    	}
+end

@@ -32,6 +32,7 @@ rule "Identify 'leading to'"
 			this after $prevToken
 		)
 	then
+		retract($prevToken);
 		modify($postfix) {
 			setToken("concerning");
 		}

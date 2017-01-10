@@ -10,9 +10,15 @@ import java.util.ArrayList;
  *
  */
 public class ComplexToken {
-
+	
+	// Information for Recommender and/or Semantic Group
 	public static final String PROJECTDOCUMENTS = "projectdocuments";
 	public static final String COSTDOCUMENTS = "documents about expenses";
+	public static final String CALENDAR = "Google calender";
+	public static final String MILESTONE = "milestones";
+	public static final String PROJECTPLANNING = "project plan";
+	public static final String TASKLIST = "tasklist";
+	public static final String DRIVE = "Google drive";
 	
 	private String restrictedToProject;
 	private String restrictedToTime;
@@ -28,7 +34,9 @@ public class ComplexToken {
 	 * @param topic the topic to set
 	 */
 	public void addTopic(String topic) {
-		this.topics.add(topic);
+		if(!topics.contains(topic)){
+			this.topics.add(topic);
+		}
 	}
 
 	/**
