@@ -19,6 +19,7 @@ public class HelloFusion {
     	    KieSession kSession = kContainer.newKieSession();
     	    
     	    //List<String> tokens = Arrays.asList("current activities", "blabla", "blablaBefore", "concerning", "HighNet", "blablaNext", "blablaNext2", "blablaNext3");
+<<<<<<< HEAD
     	    List<String> tokens = Arrays.asList("current activities", "blabla", "blablaBefore", "leading", "to", "HighNet", "blablaNext", "blablaNext2", "blablaNext3");
     	    List<String> tokens2 = Arrays.asList("blabla", "tasks", "leading","to", "milestone", "ahead" );
     	    List<String> tokens3 = Arrays.asList("blabla", "we", "working", "on", "network","issues", "for", "diagnosis", "module", "item 3", "task list", "blabla", "we", "will", "come up", "with", "something", "viable", "shortly");
@@ -29,6 +30,11 @@ public class HelloFusion {
     	    List<String> tokens8 = Arrays.asList("perfect", "see", "you", "then", "bye");
     	    List<String> tokens9 = Arrays.asList("have", "a", "nice", "day", "bye");
     	        	    
+=======
+    	    List<String> tokens = Arrays.asList("current activities", "blabla", "blablaBefore", "to", "leading", "HighNet", "blablaNext", "blablaNext2", "blablaNext3");
+    	    List<String> tokens2 = Arrays.asList("blabla", "make appointment", "blabla","about", "new contract", "tomorrow" );
+    	    List<String> tokens3 = Arrays.asList("blabla", "set deadline", "blabla","for debugging", "Wednesday" );
+>>>>>>> origin/master
     	    
     	    insertAndFireLifecycle(kSession, "start");
     	   

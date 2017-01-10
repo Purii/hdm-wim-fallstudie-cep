@@ -15,29 +15,14 @@ declare window LastEvents
     Event() over window:length(2)
 end
 
-/*
- * Time based
-rule "Recognize project based restriction"
-    when
-       	$awaitRestriction : Event(
-       		token == "concerning"
-        	|| token == "leading to"
-       	)
-       	$restriction : Event(
-       		this after[0s, 2s] $awaitRestriction,
-       		this != $awaitRestriction
-       	)
-    then
-    	System.out.println("Restriction: " + $restriction.getToken());
-end*/
-
 rule "Identify 'leading to'"
 	when
 		$prevToken : Event(
 			token == "leading"
 		) from window LastEvents
 		$postfix : Event (
-			token == "to"
+			token == "to",
+			this after $prevToken
 		)
 	then
 		modify($postfix) {
@@ -51,7 +36,7 @@ rule "Recognize project based restriction"
     when
        	$expectRestriction : Event(
        		token == "concerning"
-        	|| token == "leading to"
+        	|| token == "regarding"
        	) from window LastEvents
        	$restriction : Event(
        		this after $expectRestriction
