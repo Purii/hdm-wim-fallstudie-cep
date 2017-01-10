@@ -34,7 +34,7 @@ public class ComplexToken {
 	 * @param topic the topic to set
 	 */
 	public void addTopic(String topic) {
-		if(topics.contains(topic)){
+		if(!topics.contains(topic)){
 			this.topics.add(topic);
 		}
 	}
