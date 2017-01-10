@@ -23,7 +23,7 @@ rule "Translate separated Google Drive"
     then
     	// Das Event $prevToken entfernen, da dessen Bedeutung $nextToken hinzugefügt wird
     	retract($prevToken);
-    	// $nextToken bearbeiten. `modify` weißt die Rules Engine auf die Änderung des Events hin
+    	// $nextToken bearbeiten. `modify` weißt die Rules Engine auf die Änderung des Events hin und führt zum Aufruf der eigentlichen Verständnisregel (s.u.)
     	modify($nextToken) {
     		setToken(ComplexToken.DRIVE); // Ein einheitliches Vokabular durch den Einsatz von Variablen
     	}
@@ -55,7 +55,7 @@ end
 Bei der Definition der Regeln sind folgende Abschnitte notwendig.
 
 ### Rolle: Event
-Zur Unterstützung von `windows` müssen die Events der Rolle `Event` zugewiesen sein
+Zur Unterstützung von `windows` müssen die Events der Rolle `Event` zugewiesen sein.
 
 ```java
 declare Event
@@ -76,7 +76,6 @@ declare window CurrentEvent
 end
 
 declare window LastEvents
-	// Aktuelle wird mitgezaehlt
     Event() over window:length(2)
 end
 
