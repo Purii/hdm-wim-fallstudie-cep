@@ -13,4 +13,4 @@ tab_width = 3
 
 [*.{java,drl}]
 indent_style = tab
-indent_size = 4
+indent_size = 8

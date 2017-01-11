@@ -26,7 +26,7 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
 
 
 ## Contribution
-Als Teil des Projektes wird eine `editorconfig` bereit gestellt. Diese erleichtert eine einheitliche Formatierung des Quelltextes. So werden einheitlich Tabs, statt Spaces bevorzugt. Viele Editoren verstehen die Anweisungen dieser Datei ohne Anpassungen. Für Eclipse wird jedoch das Plugin [`editorconfig-eclipse`](https://marketplace.eclipse.org/content/editorconfig-eclipse) benötigt.
+Als Teil des Projektes wird eine `editorconfig` bereit gestellt. Diese erleichtert eine einheitliche Formatierung des Quelltextes. So werden einheitlich Tabs, statt Spaces bevorzugt (siehe [`Java Code Conventions`](http://www.oracle.com/technetwork/java/javase/documentation/codeconventions-136091.html)). Viele Editoren verstehen die Anweisungen dieser Datei ohne Anpassungen. Für Eclipse wird jedoch das Plugin [`editorconfig-eclipse`](https://marketplace.eclipse.org/content/editorconfig-eclipse) benötigt.
 
 ## Links
 
