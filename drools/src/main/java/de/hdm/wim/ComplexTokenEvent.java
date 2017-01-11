@@ -12,13 +12,17 @@ import java.util.ArrayList;
 public class ComplexTokenEvent {
 	
 	// Information for Recommender and/or Semantic Group
-	public static final String PROJECTDOCUMENTS = "projectdocuments";
-	public static final String COSTDOCUMENTS = "documents about expenses";
+	// Alphabetical order!
 	public static final String CALENDAR = "Google calender";
-	public static final String MILESTONE = "milestones";
-	public static final String PROJECTPLANNING = "project plan";
-	public static final String TASKLIST = "tasklist";
+	public static final String COSTDOCUMENTS = "documents about expenses";
 	public static final String DRIVE = "Google drive";
+	public static final String MILESTONE = "milestones";
+	public static final String PROJECTDOCUMENTS = "projectdocuments";
+	public static final String PROJECTPLANNING = "project plan";
+	public static final String PROTOCOL = "protocol";
+	public static final String PROTOCOLCREATION = "creation of protocol";
+	public static final String TASKLIST = "tasklist";
+	
 	
 	private String restrictedToProject;
 	private String restrictedToTime;

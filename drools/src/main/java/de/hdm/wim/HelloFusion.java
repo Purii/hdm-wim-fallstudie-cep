@@ -16,18 +16,19 @@ public class HelloFusion {
 		// Config in kmodule.xml
 		KieSession kSession = kContainer.newKieSession();
 		
-		List<String> tokens = Arrays.asList("lets", "talk", "about", "current activities", "concerning", "HighNet", "project");
-		List<String> tokens2 = Arrays.asList("ok", "shall", "we", "look", "at", "tasks", "leading","to", "milestone", "ahead" );
-		List<String> tokens3 = Arrays.asList("sure", "we", "working", "on", "network","issues", "for", "diagnosis", "module", "item 3", "task", "list", "blabla", "we", "will", "come up", "with", "something", "viable", "shortly");
-		List<String> tokens4 = Arrays.asList("that", "sounds", "great", "what", "about", "expenses", "do", "you", "think", "you", "will", "be", "able", "to", "stay", "whithin", "limits", "we", "aggreed", "upon", "last week");
-		List<String> tokens5 = Arrays.asList("that", "should", "be", "no", "problem", "i", "will", "leave", "detailed", "report", "on", "google", "drive");
-		List<String> tokens6 = Arrays.asList("ok", "thanks", "lets", "make", "appointment", "for", "our", "next", "meeting");
-		List<String> tokens7 = Arrays.asList("let", "me", "check", "my", "calendar", "how", "about", "next", "thursday", "at", "16", "hours", "your", "time");
-		List<String> tokens8 = Arrays.asList("perfect", "see", "you", "then", "bye");
-		List<String> tokens9 = Arrays.asList("have", "a", "nice", "day", "bye");
+		List<String> tokens1 = Arrays.asList("Hello");
+		List<String> tokens2 = Arrays.asList("lets", "talk", "about", "current activities", "concerning", "HighNet", "project");
+		List<String> tokens3 = Arrays.asList("ok", "shall", "we", "look", "at", "tasks", "leading","to", "milestone", "ahead" );
+		List<String> tokens4 = Arrays.asList("sure", "we", "working", "on", "network","issues", "for", "diagnosis", "module", "item 3", "task", "list", "blabla", "we", "will", "come up", "with", "something", "viable", "shortly");
+		List<String> tokens5 = Arrays.asList("that", "sounds", "great", "what", "about", "expenses", "do", "you", "think", "you", "will", "be", "able", "to", "stay", "whithin", "limits", "we", "aggreed", "upon", "last week");
+		List<String> tokens6 = Arrays.asList("that", "should", "be", "no", "problem", "i", "will", "leave", "detailed", "report", "on", "google", "drive");
+		List<String> tokens7 = Arrays.asList("ok", "thanks", "lets", "make", "appointment", "for", "our", "next", "meeting");
+		List<String> tokens8 = Arrays.asList("let", "me", "check", "my", "calendar", "how", "about", "next", "thursday", "at", "16", "hours", "your", "time");
+		List<String> tokens9 = Arrays.asList("perfect", "see", "you", "then", "bye");
+		List<String> tokens10 = Arrays.asList("have", "a", "nice", "day", "bye");
 		
 		List<List<String>> textsList = Arrays.asList(
-				tokens,
+				tokens1,
 				tokens2,
 				tokens3,
 				tokens4,
@@ -35,7 +36,8 @@ public class HelloFusion {
 				tokens6,
 				tokens7,
 				tokens8,
-				tokens9
+				tokens9,
+				tokens10
 		);
 		
 		TextRunner textRunner = new TextRunner();
