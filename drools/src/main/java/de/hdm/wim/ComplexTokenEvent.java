@@ -6,8 +6,9 @@ package de.hdm.wim;
 import java.util.ArrayList;
 
 /**
- * @author Patrick Puritscher
+ * The Class ComplexTokenEvent.
  *
+ * @author Patrick Puritscher
  */
 public class ComplexTokenEvent {
 	
@@ -29,12 +30,17 @@ public class ComplexTokenEvent {
 	private ArrayList<String> topics = new ArrayList<String>();
 
 	/**
+	 * Gets the topics.
+	 *
 	 * @return the topic
 	 */
 	public ArrayList<String> getTopics() {
 		return topics;
 	}
+	
 	/**
+	 * Adds the topic.
+	 *
 	 * @param topic the topic to set
 	 */
 	public void addTopic(String topic) {
@@ -44,12 +50,17 @@ public class ComplexTokenEvent {
 	}
 
 	/**
+	 * Gets the restricted to project.
+	 *
 	 * @return the restrictedToProject
 	 */
 	public String getRestrictedToProject() {
 		return restrictedToProject;
 	}
+	
 	/**
+	 * Sets the restricted to project.
+	 *
 	 * @param restrictedToProject the restrictedToProject to set
 	 */
 	public void setRestrictedToProject(String restrictedToProject) {
@@ -57,18 +68,26 @@ public class ComplexTokenEvent {
 	}
 
 	/**
+	 * Gets the restricted to time.
+	 *
 	 * @return the restrictedToTime
 	 */
 	public String getRestrictedToTime() {
 		return restrictedToTime;
 	}
+	
 	/**
+	 * Sets the restricted to time.
+	 *
 	 * @param restrictedToTime the restrictedToTime to set
 	 */
 	public void setRestrictedToTime(String restrictedToTime) {
 		this.restrictedToTime = restrictedToTime;
 	}
 	
+	/* 
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		return "Get " + String.join(", ", this.getTopics()) + " restricted to project " + this.getRestrictedToProject();
 	}

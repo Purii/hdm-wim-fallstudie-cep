@@ -7,6 +7,9 @@ import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
+/**
+ * The Class HelloFusion.
+ */
 public class HelloFusion {
 	
 	public static final void main(String[] args) {

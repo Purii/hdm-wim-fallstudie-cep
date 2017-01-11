@@ -21,6 +21,11 @@ public class DroolsExpertMain {
         }
     }
 
+    /**
+     * Execute.
+     *
+     * @param kContainer the k container
+     */
     // Inspired by: https://github.com/droolsjbpm/drools/blob/master/drools-examples/src/main/java/org/drools/examples/buspass/BussPassGoodExample.java
     public static void execute( KieContainer kContainer ) {
     	KieSession kSession = kContainer.newKieSession("ksession-rules");
