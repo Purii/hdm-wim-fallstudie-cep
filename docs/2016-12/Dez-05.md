@@ -1,5 +1,3 @@
-# 05.12.2016
-
 ### Einrichtung des GitHub-Repositories
 
 - Verteilung der Zugriffe
