@@ -12,50 +12,44 @@ declare ComplexToken
 end
 
 declare window LastComplexTokenEvent
-    ComplexTokenEvent() over window:length(1)
+	ComplexTokenEvent() over window:length(1)
 end
 
 rule "Start Lifecycle of ComplexTokenEvent"
 	// Modify will cause infinite loop
-	lock-on-active true
-    when
-        LifecycleEvent(token == "start") and
-        not ($ComplexTokenEvent : ComplexTokenEvent(
-        	restrictedToProject != null
-        ) from window LastComplexTokenEvent)
-        
-    then
-        insert(new ComplexTokenEvent());
-
+	lock-on-active
+	when
+		LifecycleEvent(token == "start") and
+		not ($ComplexTokenEvent : ComplexTokenEvent(
+			restrictedToProject != null
+		) from window LastComplexTokenEvent)
+	then
+		insert(new ComplexTokenEvent());
 end
 
 
 rule "Start Lifecycle of ComplexTokenEvent when there is already a project"
 	// Modify will cause infinite loop
-	lock-on-active true
-    when
-        (LifecycleEvent(token == "start") and
-        $ComplexTokenEvent : ComplexTokenEvent(
-        	restrictedToProject != null
-        ) from window LastComplexTokenEvent)
-        
-    then
-    	ComplexTokenEvent $nextComplexTokenEvent = new ComplexTokenEvent();
-    	$nextComplexTokenEvent.setRestrictedToProject($ComplexTokenEvent.getRestrictedToProject());
-        insert($nextComplexTokenEvent);
-
+	lock-on-active
+	when
+		(LifecycleEvent(token == "start") and
+		$ComplexTokenEvent : ComplexTokenEvent(
+			restrictedToProject != null
+		) from window LastComplexTokenEvent)
+	then
+		ComplexTokenEvent $nextComplexTokenEvent = new ComplexTokenEvent();
+		$nextComplexTokenEvent.setRestrictedToProject($ComplexTokenEvent.getRestrictedToProject());
+		insert($nextComplexTokenEvent);
 end
 
 
 rule "End Lifecycle of ComplexTokenEvent"
 	// Modify will cause infinite loop
 	lock-on-active true
-    when
-        LifecycleEvent(token == "end")
+	when
+		LifecycleEvent(token == "end")
 		// Only most recent ComplexTokenEvent
-       	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
-       	
-    then
-    	System.out.println($complexTokenEvent);
-
+		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent  	
+	then
+		System.out.println($complexTokenEvent);
 end

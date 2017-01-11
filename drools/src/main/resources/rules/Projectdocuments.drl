@@ -18,36 +18,37 @@ declare window CurrentEvent
 end
 
 declare window LastComplexTokenEvent
-    ComplexTokenEvent() over window:length(1)
+	ComplexTokenEvent() over window:length(1)
 end
 
 rule "Identify topic projectdocuments"
 	// Modify will cause infinite loop
-	lock-on-active true
-    when
-        Event(
-       		token == "current activities"
-        	|| token == "documents"
-        ) from window CurrentEvent
-        // Only most recent ComplexTokenEvent
-       	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
-    then
-    	modify($complexTokenEvent) {
-    		addTopic(ComplexTokenEvent.PROJECTDOCUMENTS)
-    	}
+	no-loop
+	when
+		Event(
+			token == "current activities"
+			|| token == "documents"
+			|| token == ComplexTokenEvent.PROJECTDOCUMENTS
+		) from window CurrentEvent
+		// Only most recent ComplexTokenEvent
+		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
+	then
+		modify($complexTokenEvent) {
+			addTopic(ComplexTokenEvent.PROJECTDOCUMENTS)
+		}
 end
 
-rule "Identify cost documents"
+rule "Merge separated cost documents"
 	// Modify will cause infinite loop
-	lock-on-active true
-    when
-    	Event(
-    		token == "expenses"
-    		|| token == "expense"
-    	)  from window CurrentEvent
-    	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
-    then
-    	modify($complexTokenEvent) {
-    		addTopic(ComplexTokenEvent.COSTDOCUMENTS)
-    	}
+	no-loop
+	when
+		Event(
+			token == "expenses"
+			|| token == "expense"
+		)  from window CurrentEvent
+		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
+	then
+		modify($complexTokenEvent) {
+			addTopic(ComplexTokenEvent.COSTDOCUMENTS)
+		}
 end

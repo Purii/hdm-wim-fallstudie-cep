@@ -15,11 +15,11 @@ end
 
 declare window LastEvents
 	// Aktuelle wird mitgezaehlt
-    Event() over window:length(2)
+	Event() over window:length(2)
 end
 
 declare window LastComplexTokenEvent
-    ComplexToken() over window:length(1)
+	ComplexToken() over window:length(1)
 end
 /*
 rule "Identify 'leading to'"
@@ -40,19 +40,19 @@ end */
 
 rule "Recognize project based restriction"
     // Modify will cause infinite loop
-	lock-on-active true
-    when
-       	$expectRestriction : Event(
-       		token == "concerning"
-        	|| token == "regarding"
-       	) from window LastEvents
-       	$restriction : Event(
-       		this after $expectRestriction
-       	)
-       	// Only most recent ComplexTokenEvent
-       	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
-    then
-    	modify($complexTokenEvent) {
-    		setRestrictedToProject($restriction.getToken())
-    	}
+	no-loop
+	when
+		$expectRestriction : Event(
+			token == "concerning"
+			|| token == "regarding"
+		) from window LastEvents
+		$restriction : Event(
+			this after $expectRestriction
+		)
+		// Only most recent ComplexTokenEvent
+		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
+	then
+		modify($complexTokenEvent) {
+			setRestrictedToProject($restriction.getToken())
+		}
 end

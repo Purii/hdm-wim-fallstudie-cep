@@ -20,56 +20,57 @@ end
 
 declare window LastEvents
 	// Aktuelle wird mitgezaehlt
-    Event() over window:length(2)
+	Event() over window:length(2)
 end
 
 declare window LastComplexTokenEvent
-    ComplexTokenEvent() over window:length(1)
+ComplexTokenEvent() over window:length(1)
 end
 
 rule "Identify Milestone"
 	// Modify will cause infinite loop
 	no-loop
-    when
-        Event(
-       		token == "milestone"
-        ) from window CurrentEvent
-        // Only most recent ComplexTokenEvent
-       	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
-    then
-    	modify($complexTokenEvent) {
-    		addTopic(ComplexTokenEvent.MILESTONE)
-    	}
+	when
+		Event(
+			token == "milestone"
+			|| token == ComplexTokenEvent.MILESTONE
+		) from window CurrentEvent
+		// Only most recent ComplexTokenEvent
+		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
+	then
+		modify($complexTokenEvent) {
+			addTopic(ComplexTokenEvent.MILESTONE)
+		}
 end
 
 rule "Identify Tasklist"
 	// Modify will cause infinite loop
 	no-loop
-    when
-        Event(
-       		token == "tasklist"
-       		|| token == ComplexTokenEvent.TASKLIST
-        ) from window CurrentEvent
-        // Only most recent ComplexTokenEvent
-       	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
-    then
-    	modify($complexTokenEvent) {
-    		addTopic(ComplexTokenEvent.TASKLIST)
-    	}
+	when
+		Event(
+			token == "tasks"
+			|| token == ComplexTokenEvent.TASKLIST
+		) from window CurrentEvent
+		// Only most recent ComplexTokenEvent
+		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
+	then
+		modify($complexTokenEvent) {
+			addTopic(ComplexTokenEvent.TASKLIST)
+		}
 end
 
-rule "Identify Tasklist #2"
-    when
-        $prevToken : Event(
-        	token == "task"
-        ) from window LastEvents
-        $nextToken : Event(
-       		token == "list",
-       		this after $prevToken
-        )
-    then
-    	retract($prevToken);
-    	modify($nextToken) {
-    		setToken(ComplexTokenEvent.TASKLIST);
-    	}
+rule "Merge separated Tasklist"
+	when
+		$prevToken : Event(
+			token == "task"
+		) from window LastEvents
+		$nextToken : Event(
+			token == "list",
+			this after $prevToken
+		)
+	then
+		retract($prevToken);
+		modify($nextToken) {
+			setToken(ComplexTokenEvent.TASKLIST);
+		}
 end

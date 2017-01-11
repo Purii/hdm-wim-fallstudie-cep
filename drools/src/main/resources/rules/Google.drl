@@ -20,57 +20,57 @@ end
 
 declare window LastEvents
 	// Aktuelle wird mitgezaehlt
-    Event() over window:length(2)
+	Event() over window:length(2)
 end
 
 declare window LastComplexTokenEvent
-    ComplexTokenEvent() over window:length(1)
+	ComplexTokenEvent() over window:length(1)
 end
 
 
 rule "Calendar"
-    lock-on-active true
-    when
-        Event(
-       		token == "appointment"
-        	|| token == "meeting"
-        )
-        $complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
-    then
-        modify($complexTokenEvent) {
-    		addTopic(ComplexTokenEvent.CALENDAR);
-    	}
+	no-loop
+	when
+		Event(
+			token == "appointment"
+			|| token == "meeting"
+		) from window CurrentEvent
+		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
+	then
+		modify($complexTokenEvent) {
+			addTopic(ComplexTokenEvent.CALENDAR);
+		}
 end
 
 
 rule "Identify Google Drive"
 	no-loop
-    when
-        Event(
-       		token == "drive"
-       		|| token == "Google drive"
-       		|| token == ComplexTokenEvent.DRIVE
-        ) from window CurrentEvent
-        // Only most recent ComplexTokenEvent
-       	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
-    then
-    	modify($complexTokenEvent) {
-    		addTopic(ComplexTokenEvent.DRIVE)
-    	}
+	when
+		Event(
+			token == "drive"
+			|| token == "Google drive"
+			|| token == ComplexTokenEvent.DRIVE
+		) from window CurrentEvent
+		// Only most recent ComplexTokenEvent
+		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
+	then
+		modify($complexTokenEvent) {
+			addTopic(ComplexTokenEvent.DRIVE)
+		}
 end
 
-rule "Translate separated Google Drive"
-    when
-        $prevToken : Event(
-        	token == "google"
-        ) from window LastEvents
-        $nextToken : Event(
-       		token == "drive",
-       		this after $prevToken
-        )
-    then
-    	retract($prevToken);
-    	modify($nextToken) {
-    		setToken(ComplexTokenEvent.DRIVE);
-    	}
+rule "Merge separated Google Drive"
+	when
+		$prevToken : Event(
+			token == "google"
+		) from window LastEvents
+		$nextToken : Event(
+			token == "drive",
+			this after $prevToken
+		)
+	then
+		retract($prevToken);
+		modify($nextToken) {
+			setToken(ComplexTokenEvent.DRIVE);
+		}
 end

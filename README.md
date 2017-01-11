@@ -5,7 +5,7 @@
 
 ## Installation
 Hinweise zur Installation der jeweiligen Implementierung befinden sich im entsprechenden Ordner:
-* [Drools](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/drools/README.md)
+* [`Drools`](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/drools/README.md)
 
 ## Dokumentation
 Die Dokumentation findet sich im Ordner [`docs`](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs).
@@ -23,6 +23,10 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
 | "ok", "shall", "we", "look", "at", "tasks", "leading","to", "milestone", "ahead" | "Get tasklist, next milestones restricted to project HighNet" |
 | "that", "sounds", "great", "what", "about", "expenses", "do", "you", "think", "you", "will", "be", "able", "to", "stay", "whithin", "limits", "we", "aggreed", "upon", "last week" | "Get documents about expenses restricted to project HighNet" |
 | "that", "should", "be", "no", "problem", "i", "will", "leave", "detailed", "report", "on", "google", "drive") | "Get Google drive restricted to project HighNet |
+
+
+## Contribution
+Als Teil des Projektes wird eine `editorconfig` bereit gestellt. Diese erleichtert eine einheitliche Formatierung des Quelltextes. So werden einheitlich Tabs, statt Spaces bevorzugt. Viele Editoren verstehen die Anweisungen dieser Datei ohne Anpassungen. Für Eclipse wird jedoch das Plugin [`editorconfig-eclipse`](https://marketplace.eclipse.org/content/editorconfig-eclipse) benötigt.
 
 ## Links
 

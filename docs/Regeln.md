@@ -12,7 +12,7 @@ Um zwei zusammenhängende Worte zu erkennen, wird auf den temporalen Operator `a
 `$prevToken` definiert dabei den Token, welcher vorangestellt ist. `$nextToken``der daran Anschließende.
 
 ```java
-rule "Translate separated Google Drive"
+rule "Merge separated Google Drive"
     when
     	// Vorangestellter Token
         $prevToken : Event(
