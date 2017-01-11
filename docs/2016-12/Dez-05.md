@@ -1,3 +1,5 @@
+#Gruppentreff
+
 ### Einrichtung des GitHub-Repositories
 
 - Verteilung der Zugriffe
