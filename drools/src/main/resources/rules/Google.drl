@@ -48,7 +48,7 @@ rule "Identify Google Drive"
 	when
 		Event(
 			token == "drive"
-			|| token == "Google drive"
+			|| token == "google drive"
 			|| token == ComplexTokenEvent.DRIVE
 		) from window CurrentEvent
 		// Only most recent ComplexTokenEvent

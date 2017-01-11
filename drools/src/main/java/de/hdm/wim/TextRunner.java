@@ -12,7 +12,8 @@ public class TextRunner {
 	private static void insertAndFire(KieSession kSession, String token) {
 		PseudoClockScheduler clock = kSession.getSessionClock();
 		
-		final Event t = new Event(token);
+		// Force LowerCase
+		final Event t = new Event(token.toLowerCase());
 		kSession.insert(t);
 		
 		clock.advanceTime(2, TimeUnit.SECONDS);

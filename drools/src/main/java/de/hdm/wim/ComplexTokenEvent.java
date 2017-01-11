@@ -13,9 +13,9 @@ public class ComplexTokenEvent {
 	
 	// Information for Recommender and/or Semantic Group
 	// Alphabetical order!
-	public static final String CALENDAR = "Google calender";
+	public static final String CALENDAR = "google calender";
 	public static final String COSTDOCUMENTS = "documents about expenses";
-	public static final String DRIVE = "Google drive";
+	public static final String DRIVE = "google drive";
 	public static final String MILESTONE = "milestones";
 	public static final String PROJECTDOCUMENTS = "projectdocuments";
 	public static final String PROJECTPLANNING = "project plan";
