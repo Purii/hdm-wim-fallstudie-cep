@@ -24,6 +24,16 @@ public class ComplexTokenEvent {
 	public static final String PROTOCOLCREATION = "creation of protocol";
 	public static final String TASKLIST = "tasklist";
 	
+	// Information about date/time restriction
+	public static final String DATERANGE_NEXT = "next";
+	public static final String DATERANGE_PREV = "previous";
+	public static final String DATE_MONDAY = "monday";
+	public static final String DATE_TUESDAY = "tuesday";
+	public static final String DATE_WEDNESDAY = "wednesday";
+	public static final String DATE_THURSDAY = "thursday";
+	public static final String DATE_FRIDAY= "friday";
+	public static final String DATE_SATURDAY = "saturday";
+	public static final String DATE_SUNDAY = "sunday";
 	
 	private String restrictedToDate;
 	private String restrictedToProject;
