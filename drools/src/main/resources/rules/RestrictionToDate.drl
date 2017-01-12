@@ -80,6 +80,7 @@ rule "Identify previous {Monday, Tuesday,..}"
 	when
 		$prevToken : Event(
 			token == "previous"
+			|| token == "last
 		) from window LastEvents
 		Event(
 			token == ComplexTokenEvent.DATE_MONDAY,
