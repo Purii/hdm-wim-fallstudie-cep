@@ -47,6 +47,7 @@ public class ComplexTokenEvent {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
+		this.toJson();
 		if(this.getRestrictedToDate() != null) {
 			if(this.getTopics().contains(ComplexTokenEvent.CALENDAR)){
 				this.getTopics().remove(ComplexTokenEvent.CALENDAR);
@@ -74,8 +75,10 @@ public class ComplexTokenEvent {
 			+ " restricted to project " + this.getRestrictedToProject();
 	}
 	
-	public String toJson() {
+	public void toJson() {
 		Gson gson = new Gson();
+		String json = gson.toJson(this);
+	        System.out.println(json);
 	}
 	
 	/**
