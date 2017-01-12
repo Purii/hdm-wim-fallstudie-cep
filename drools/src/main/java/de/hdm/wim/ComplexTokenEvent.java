@@ -4,7 +4,9 @@
 package de.hdm.wim;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import com.google.gson.Gson;
 
 /**
  * The Class ComplexTokenEvent.
@@ -38,7 +40,7 @@ public class ComplexTokenEvent {
 	
 	private LocalDate restrictedToDate;
 	private String restrictedToProject;
-	private String restrictedToTime;
+	private LocalTime restrictedToTime;
 	private ArrayList<String> topics = new ArrayList<String>();
 
 	/* 
@@ -46,25 +48,34 @@ public class ComplexTokenEvent {
 	 */
 	public String toString() {
 		if(this.getRestrictedToDate() != null) {
-			if(this.getTopics().contains(this.CALENDAR)){
-				this.getTopics().remove(this.CALENDAR);
+			if(this.getTopics().contains(ComplexTokenEvent.CALENDAR)){
+				this.getTopics().remove(ComplexTokenEvent.CALENDAR);
 				if(this.getTopics().isEmpty()){
 					return "Set new meeting at " + this.getRestrictedToDate().toString()
-					+ " restricted to project " + this.getRestrictedToProject();
-				}
-				else{
+						+ " restricted to project " + this.getRestrictedToProject();
+				} else {
 					return "Set new meeting for " + String.join(", ", this.getTopics())
+						+ " restricted to project " + this.getRestrictedToProject()
+						+ " at " + this.getRestrictedToDate().toString();
+				}
+			} else {
+				return "Get " + String.join(", ", this.getTopics())
 					+ " restricted to project " + this.getRestrictedToProject()
 					+ " at " + this.getRestrictedToDate().toString();
-				}
-			}else{
-				return "Get " + String.join(", ", this.getTopics())
-				+ " restricted to project " + this.getRestrictedToProject()
-				+ " at " + this.getRestrictedToDate().toString();
 			}
 		}
+		// Need rewrite
+		if(this.getRestrictedToTime() != null) {
 			return "Get " + String.join(", ", this.getTopics())
+			+ " restricted to project " + this.getRestrictedToProject()
+			+ " at " + this.getRestrictedToTime().toString();
+		}
+		return "Get " + String.join(", ", this.getTopics())
 			+ " restricted to project " + this.getRestrictedToProject();
+	}
+	
+	public String toJson() {
+		Gson gson = new Gson();
 	}
 	
 	/**
@@ -110,7 +121,7 @@ public class ComplexTokenEvent {
 	 *
 	 * @return the restrictedToTime
 	 */
-	public String getRestrictedToTime() {
+	public LocalTime getRestrictedToTime() {
 		return restrictedToTime;
 	}
 	
@@ -119,7 +130,7 @@ public class ComplexTokenEvent {
 	 *
 	 * @param restrictedToTime the restrictedToTime to set
 	 */
-	public void setRestrictedToTime(String restrictedToTime) {
+	public void setRestrictedToTime(LocalTime restrictedToTime) {
 		this.restrictedToTime = restrictedToTime;
 	}
 

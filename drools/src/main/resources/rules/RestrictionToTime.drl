@@ -1,0 +1,66 @@
+//created on: 10.01.2017
+package de.hdm.wim
+
+//list any import classes here.
+import de.hdm.wim.ComplexTokenEvent
+import de.hdm.wim.Event
+import java.time.LocalTime;
+
+
+//declare any global variables here
+declare Event
+	@role(event)
+end
+declare ComplexTokenEvent
+	@role(event)
+end
+
+declare window CurrentEvent
+	Event() over window:length(1)
+end
+
+declare window LastEvents
+	// Aktuelle wird mitgezaehlt
+	Event() over window:length(2)
+end
+
+declare window LastComplexTokenEvent
+	ComplexTokenEvent() over window:length(1)
+end
+
+
+
+/*rule "Identify restriction concering time"
+	when
+		$prevToken : Event(
+			token matches "(([01]?[0-9]|2[0-4]))"
+		)
+		$nextToken : Event(
+			token == "o'clock",
+			this after $prevToken
+		) from window CurrentEvent
+	then
+		String $time24
+		System.out.println("blaaa1");
+end*/
+
+rule "Identify restriction concering time pm/am"
+	no-loop
+	when
+		$timeEvent : Event(
+			token matches "((0?[1-9])|1[0-2])(am|pm)",
+			$time : token
+		) from window CurrentEvent
+		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
+	then
+		String $time24h = new String($time);
+		if($time24h.endsWith("pm")) {
+			$time24h = String.valueOf(Integer.parseInt($time24h.replace("pm", "")) + 12);
+		} else if($time24h.endsWith("am")) {
+			$time24h = $time24h.replace("am", "");
+		}
+		
+		modify($complexTokenEvent) {
+			setRestrictedToTime(LocalTime.parse( $time24h + ":00"))
+		}
+end

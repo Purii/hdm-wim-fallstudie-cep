@@ -29,7 +29,10 @@ public class HelloFusion {
 		List<String> tokens8 = Arrays.asList("let", "me", "check", "my", "calendar", "how", "about", "next", "thursday", "at", "16", "hours", "your", "time");
 		List<String> tokens9 = Arrays.asList("perfect", "see", "you", "then", "bye");
 		List<String> tokens10 = Arrays.asList("have", "a", "nice", "day", "bye");
-		List<String> tokens11 = Arrays.asList("blblbala", "previous", "monday", "blaaa");
+		List<String> tokens11 = Arrays.asList("expenses", "previous", "monday");
+		List<String> tokens12 = Arrays.asList("expenses", "blaaa", "12", "o'clock");
+		List<String> tokens13 = Arrays.asList("expenses", "blaaa", "16:00");
+		List<String> tokens14 = Arrays.asList("expenses", "blaaa", "1pm");
 		
 		List<List<String>> textsList = Arrays.asList(
 				tokens1,
@@ -42,7 +45,10 @@ public class HelloFusion {
 				tokens8,
 				tokens9,
 				tokens10,
-				tokens11
+				tokens11,
+				tokens12,
+				tokens13,
+				tokens14
 		);
 		
 		TextRunner textRunner = new TextRunner();
