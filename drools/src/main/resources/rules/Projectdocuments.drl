@@ -17,6 +17,11 @@ declare window CurrentEvent
 	Event() over window:length(1)
 end
 
+declare window LastEvents
+	// Aktuelle wird mitgezaehlt
+	Event() over window:length(2)
+end
+
 declare window LastComplexTokenEvent
 	ComplexTokenEvent() over window:length(1)
 end
