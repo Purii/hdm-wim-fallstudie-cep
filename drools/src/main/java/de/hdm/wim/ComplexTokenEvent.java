@@ -25,10 +25,18 @@ public class ComplexTokenEvent {
 	public static final String TASKLIST = "tasklist";
 	
 	
+	private String restrictedToDate;
 	private String restrictedToProject;
 	private String restrictedToTime;
 	private ArrayList<String> topics = new ArrayList<String>();
 
+	/* 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return "Get " + String.join(", ", this.getTopics()) + " restricted to project " + this.getRestrictedToProject();
+	}
+	
 	/**
 	 * Gets the topics.
 	 *
@@ -84,11 +92,18 @@ public class ComplexTokenEvent {
 	public void setRestrictedToTime(String restrictedToTime) {
 		this.restrictedToTime = restrictedToTime;
 	}
-	
-	/* 
-	 * @see java.lang.Object#toString()
+
+	/**
+	 * @return the restrictedToDate
 	 */
-	public String toString() {
-		return "Get " + String.join(", ", this.getTopics()) + " restricted to project " + this.getRestrictedToProject();
+	public String getRestrictedToDate() {
+		return restrictedToDate;
+	}
+
+	/**
+	 * @param restrictedToDate the restrictedToDate to set
+	 */
+	public void setRestrictedToDate(String restrictedToDate) {
+		this.restrictedToDate = restrictedToDate;
 	}
 }
