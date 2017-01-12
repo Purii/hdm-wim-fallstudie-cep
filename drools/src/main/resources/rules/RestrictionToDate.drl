@@ -26,8 +26,6 @@ declare window LastComplexTokenEvent
 	ComplexTokenEvent() over window:length(1)
 end
 
-
-
 rule "Identify next {Monday, Tuesday,..}"
 	when
 		$prevToken : Event(
@@ -75,5 +73,55 @@ rule "Identify next {Monday, Tuesday,..}"
 		retract($prevToken);
 		modify($complexTokenEvent) {
 			setRestrictedToDate(nextDay)
+		}
+end
+
+rule "Identify previous {Monday, Tuesday,..}"
+	when
+		$prevToken : Event(
+			token == "previous"
+		) from window LastEvents
+		Event(
+			token == ComplexTokenEvent.DATE_MONDAY,
+			$dayOfWeek : DayOfWeek.MONDAY,
+			this after $prevToken
+		)
+		or Event(
+			token == ComplexTokenEvent.DATE_TUESDAY,
+			$dayOfWeek : DayOfWeek.TUESDAY,
+			this after $prevToken
+		)
+		or Event(
+			token == ComplexTokenEvent.DATE_WEDNESDAY,
+			$dayOfWeek : DayOfWeek.WEDNESDAY,
+			this after $prevToken
+		)
+		or Event(
+			token == ComplexTokenEvent.DATE_THURSDAY,
+			$dayOfWeek : DayOfWeek.THURSDAY,
+			this after $prevToken
+		)
+		or Event(
+			token == ComplexTokenEvent.DATE_FRIDAY,
+			$dayOfWeek : DayOfWeek.FRIDAY,
+			this after $prevToken
+		)
+		or Event(
+			token == ComplexTokenEvent.DATE_SATURDAY,
+			$dayOfWeek : DayOfWeek.SATURDAY,
+			this after $prevToken
+		)
+		or Event(
+			token == ComplexTokenEvent.DATE_SUNDAY,
+			$dayOfWeek : DayOfWeek.SUNDAY,
+			this after $prevToken
+		)
+		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
+	then
+		LocalDate today = LocalDate.now();
+		LocalDate prevDay = today.with( TemporalAdjusters.previous( $dayOfWeek ) );
+		retract($prevToken);
+		modify($complexTokenEvent) {
+			setRestrictedToDate(prevDay)
 		}
 end
