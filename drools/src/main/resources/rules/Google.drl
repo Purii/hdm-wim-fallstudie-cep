@@ -34,6 +34,7 @@ rule "Calendar"
 		Event(
 			token == "appointment"
 			|| token == "meeting"
+			|| token == "calendar"
 		) from window CurrentEvent
 		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
 	then
