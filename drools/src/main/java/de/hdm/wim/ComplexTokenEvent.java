@@ -74,10 +74,9 @@ public class ComplexTokenEvent {
 			+ " restricted to project " + this.getRestrictedToProject();
 	}
 	
-	public void toJson() {
+	public String toJson() {
 		Gson gson = new Gson();
-		String json = gson.toJson(this);
-	        System.out.println(json);
+		return gson.toJson(this);
 	}
 	
 	/**

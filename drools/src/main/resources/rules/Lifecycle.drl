@@ -7,7 +7,7 @@ import de.hdm.wim.ComplexTokenEvent
 
 
 //declare any global variables here
-declare ComplexToken
+declare ComplexTokenEvent
 	@role(event)
 end
 
@@ -21,8 +21,9 @@ rule "Start Lifecycle of ComplexTokenEvent"
 	when
 		LifecycleEvent(token == "start") and
 		not ($ComplexTokenEvent : ComplexTokenEvent(
-			restrictedToProject != null
-		) from window LastComplexTokenEvent)
+				restrictedToProject != null
+			) from window LastComplexTokenEvent
+		)
 	then
 		insert(new ComplexTokenEvent());
 end
@@ -34,8 +35,9 @@ rule "Start Lifecycle of ComplexTokenEvent when there is already a project"
 	when
 		(LifecycleEvent(token == "start") and
 		$ComplexTokenEvent : ComplexTokenEvent(
-			restrictedToProject != null
-		) from window LastComplexTokenEvent)
+				restrictedToProject != null
+			) from window LastComplexTokenEvent
+		)
 	then
 		ComplexTokenEvent $nextComplexTokenEvent = new ComplexTokenEvent();
 		$nextComplexTokenEvent.setRestrictedToProject($ComplexTokenEvent.getRestrictedToProject());
@@ -51,5 +53,6 @@ rule "End Lifecycle of ComplexTokenEvent"
 		// Only most recent ComplexTokenEvent
 		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent  	
 	then
-		System.out.println($complexTokenEvent);
+		//System.out.println($complexTokenEvent);
+		System.out.println($complexTokenEvent.toJson());
 end

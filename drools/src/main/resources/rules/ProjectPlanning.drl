@@ -24,7 +24,7 @@ declare window LastEvents
 end
 
 declare window LastComplexTokenEvent
-ComplexTokenEvent() over window:length(1)
+	ComplexTokenEvent() over window:length(1)
 end
 
 rule "Identify Milestone"
