@@ -3,6 +3,7 @@
  */
 package de.hdm.wim;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -35,7 +36,7 @@ public class ComplexTokenEvent {
 	public static final String DATE_SATURDAY = "saturday";
 	public static final String DATE_SUNDAY = "sunday";
 	
-	private String restrictedToDate;
+	private LocalDate restrictedToDate;
 	private String restrictedToProject;
 	private String restrictedToTime;
 	private ArrayList<String> topics = new ArrayList<String>();
@@ -44,7 +45,13 @@ public class ComplexTokenEvent {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return "Get " + String.join(", ", this.getTopics()) + " restricted to project " + this.getRestrictedToProject();
+		if(this.getRestrictedToDate() != null) {
+			return "Get " + String.join(", ", this.getTopics())
+			+ " restricted to project " + this.getRestrictedToProject()
+			+ " at " + this.getRestrictedToDate().toString();
+		}
+			return "Get " + String.join(", ", this.getTopics())
+			+ " restricted to project " + this.getRestrictedToProject();
 	}
 	
 	/**
@@ -106,14 +113,14 @@ public class ComplexTokenEvent {
 	/**
 	 * @return the restrictedToDate
 	 */
-	public String getRestrictedToDate() {
+	public LocalDate getRestrictedToDate() {
 		return restrictedToDate;
 	}
 
 	/**
 	 * @param restrictedToDate the restrictedToDate to set
 	 */
-	public void setRestrictedToDate(String restrictedToDate) {
+	public void setRestrictedToDate(LocalDate restrictedToDate) {
 		this.restrictedToDate = restrictedToDate;
 	}
 }
