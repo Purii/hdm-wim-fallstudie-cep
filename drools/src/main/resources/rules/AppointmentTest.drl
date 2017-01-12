@@ -52,7 +52,6 @@ rule "Check last tokens if Date"
 		}
 		System.out.println("Set meeting for " + $day.getToken() + ".");
 end
-<<<<<<< HEAD
 
 rule "Your Second Rule"
     //include attributes such as "salience" here...
@@ -62,6 +61,4 @@ rule "Your Second Rule"
         //actions
 
 end
-=======
->>>>>>> origin/master
 */

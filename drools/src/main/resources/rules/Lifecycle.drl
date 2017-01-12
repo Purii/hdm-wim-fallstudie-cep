@@ -45,7 +45,7 @@ end
 
 rule "End Lifecycle of ComplexTokenEvent"
 	// Modify will cause infinite loop
-	lock-on-active true
+	lock-on-active
 	when
 		LifecycleEvent(token == "end")
 		// Only most recent ComplexTokenEvent

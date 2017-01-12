@@ -47,7 +47,6 @@ public class ComplexTokenEvent {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		this.toJson();
 		if(this.getRestrictedToDate() != null) {
 			if(this.getTopics().contains(ComplexTokenEvent.CALENDAR)){
 				this.getTopics().remove(ComplexTokenEvent.CALENDAR);
