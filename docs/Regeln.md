@@ -87,7 +87,7 @@ end
 ```
 ### Windows (Zeitfenster)
 
-Das Window `ThreeMinutes` soll lediglich die Möglichkeit veranschaulichen, um Zeitfenster mithilfe von Drools zu definieren und zu nutzen. Dabei wird window:`time` statt window:`lenght` verwendet und in der Klammer kann man im Anschluss den Wert und die Einheit der Zeitangabe festlegen. `m` steht für Minuten.
+Das Window `ThreeMinutes` soll lediglich die Möglichkeit veranschaulichen, um Zeitfenster mithilfe von Drools zu definieren und zu nutzen. Dabei wird `window:time` statt `window:length` verwendet und in der Klammer kann man im Anschluss den Wert und die Einheit der Zeitangabe festlegen. m steht für Minuten.
 
 ```java
 declare window ThreeMinutes
