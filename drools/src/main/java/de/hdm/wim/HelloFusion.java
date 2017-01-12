@@ -31,7 +31,7 @@ public class HelloFusion {
 		List<String> tokens10 = Arrays.asList("have", "a", "nice", "day", "bye");
 		List<String> tokens11 = Arrays.asList("expenses", "previous", "monday");
 		List<String> tokens12 = Arrays.asList("expenses", "blaaa", "12", "o'clock");
-		List<String> tokens13 = Arrays.asList("expenses", "blaaa", "16:00");
+		List<String> tokens13 = Arrays.asList("meeting", "at", "16:00");
 		List<String> tokens14 = Arrays.asList("expenses", "blaaa", "1pm");
 		
 		List<List<String>> textsList = Arrays.asList(
