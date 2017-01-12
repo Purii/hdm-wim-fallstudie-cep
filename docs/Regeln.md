@@ -68,9 +68,9 @@ declare ComplexTokenEvent
 end
 ```
 
-### Windows
+### Windows (Mengenfenster)
 
-Das Window `CurrentEvent` wird benötigt, um die Anwendung der Regeln auf das jeweils aktuelle Event zu beschränken. `LastEvents` wird für die Kombination zweier Tokens / Events benötigt, um ein einheitliches Vokabular zu ermöglichen. Das Window `LastComplexTokenEvent` ermöglicht es, auf das jeweils aktuelle `ComplexToken`-Event zuzugreifen.
+Das Window `CurrentEvent` wird benötigt, um die Anwendung der Regeln auf das jeweils aktuelle Event zu beschränken. `LastEvents` wird für die Kombination zweier Tokens / Events benötigt, um ein einheitliches Vokabular zu ermöglichen. Das Window `LastComplexTokenEvent` ermöglicht es, auf das jeweils aktuelle `ComplexToken`-Event zuzugreifen. 
 
 ```java
 declare window CurrentEvent
@@ -83,5 +83,14 @@ end
 
 declare window LastComplexTokenEvent
     ComplexTokenEvent() over window:length(1)
+end
+```
+### Windows (Zeitfenster)
+
+Das Window `ThreeMinutes` soll lediglich die Möglichkeit veranschaulichen, um Zeitfenster mithilfe von Drools zu definieren und zu nutzen. Dabei wird window:`time` statt window:`lenght` verwendet und in der Klammer kann man im Anschluss den Wert und die Einheit der Zeitangabe festlegen. `m` steht für Minuten.
+
+```java
+declare window ThreeMinutes
+	Event() over window:time(3m)
 end
 ```
