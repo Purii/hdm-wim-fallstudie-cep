@@ -27,7 +27,7 @@ declare window LastComplexTokenEvent
 	ComplexToken() over window:length(1)
 end
 
-
+/*
 rule "Check last tokens if Date"
 	no-loop
     when
@@ -52,7 +52,7 @@ rule "Check last tokens if Date"
 		}
 		System.out.println("Set meeting for " + $day.getToken() + ".");
 end
-/*
+
 rule "Your Second Rule"
     //include attributes such as "salience" here...
     when
