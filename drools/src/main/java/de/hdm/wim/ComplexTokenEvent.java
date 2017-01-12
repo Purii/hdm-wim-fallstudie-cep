@@ -46,9 +46,22 @@ public class ComplexTokenEvent {
 	 */
 	public String toString() {
 		if(this.getRestrictedToDate() != null) {
-			return "Get " + String.join(", ", this.getTopics())
-			+ " restricted to project " + this.getRestrictedToProject()
-			+ " at " + this.getRestrictedToDate().toString();
+			if(this.getTopics().contains(this.CALENDAR)){
+				this.getTopics().remove(this.CALENDAR);
+				if(this.getTopics().isEmpty()){
+					return "Set new meeting at " + this.getRestrictedToDate().toString()
+					+ " restricted to project " + this.getRestrictedToProject();
+				}
+				else{
+					return "Set new meeting for " + String.join(", ", this.getTopics())
+					+ " restricted to project " + this.getRestrictedToProject()
+					+ " at " + this.getRestrictedToDate().toString();
+				}
+			}else{
+				return "Get " + String.join(", ", this.getTopics())
+				+ " restricted to project " + this.getRestrictedToProject()
+				+ " at " + this.getRestrictedToDate().toString();
+			}
 		}
 			return "Get " + String.join(", ", this.getTopics())
 			+ " restricted to project " + this.getRestrictedToProject();
