@@ -32,7 +32,13 @@ rule "Check last tokens if Date"
 	no-loop
     when
         ($day : Event(
-			token == "thursday"
+			token == ComplexTokenEvent.DATE_MONDAY
+			|| token == ComplexTokenEvent.DATE_TUESDAY
+			|| token == ComplexTokenEvent.DATE_WEDNESDAY
+			|| token == ComplexTokenEvent.DATE_THURSDAY
+			|| token == ComplexTokenEvent.DATE_FRIDAY
+			|| token == ComplexTokenEvent.DATE_SATURDAY
+			|| token == ComplexTokenEvent.DATE_SUNDAY
 		) from window LastEvents
 		and
 		$appointment : Event(
@@ -42,7 +48,7 @@ rule "Check last tokens if Date"
 		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
     then
         modify($complexTokenEvent) {
-			setRestrictedToTime($day.getToken())
+			setRestrictedToDate($day.getToken())
 		}
 		System.out.println("Set meeting for " + $day.getToken() + ".");
 end

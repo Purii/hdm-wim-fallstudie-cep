@@ -17,6 +17,11 @@ declare window CurrentEvent
 	Event() over window:length(1)
 end
 
+declare window LastEvents
+	// Aktuelle wird mitgezaehlt
+	Event() over window:length(2)
+end
+
 declare window LastComplexTokenEvent
 	ComplexTokenEvent() over window:length(1)
 end
@@ -26,8 +31,7 @@ rule "Identify topic projectdocuments"
 	no-loop
 	when
 		Event(
-			token == "current activities"
-			|| token == "documents"
+			 token == "documents"
 			|| token == ComplexTokenEvent.PROJECTDOCUMENTS
 		) from window CurrentEvent
 		// Only most recent ComplexTokenEvent
@@ -35,6 +39,22 @@ rule "Identify topic projectdocuments"
 	then
 		modify($complexTokenEvent) {
 			addTopic(ComplexTokenEvent.PROJECTDOCUMENTS)
+		}
+end
+
+rule "Merge separated current activities"
+	when
+		$prevToken : Event(
+			token == "current"
+		) from window LastEvents
+		$nextToken : Event(
+			token == "activities",
+			this after $prevToken
+		)
+	then
+		retract($prevToken);
+		modify($nextToken) {
+			setToken(ComplexTokenEvent.PROJECTDOCUMENTS);
 		}
 end
 
