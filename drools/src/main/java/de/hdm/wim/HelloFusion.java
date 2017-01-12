@@ -30,8 +30,8 @@ public class HelloFusion {
 		List<String> tokens9 = Arrays.asList("perfect", "see", "you", "then", "bye");
 		List<String> tokens10 = Arrays.asList("have", "a", "nice", "day", "bye");
 		List<String> tokens11 = Arrays.asList("expenses", "previous", "monday");
-		List<String> tokens12 = Arrays.asList("expenses", "blaaa", "12", "o'clock");
-		List<String> tokens13 = Arrays.asList("meeting", "at", "16:00");
+		List<String> tokens12 = Arrays.asList("Let", "us", "make", "an", "appointment", "for", "next", "Monday", "at", "09", "am");
+		List<String> tokens13 = Arrays.asList("Let's", "plan", "a", "meeting", "at", "16:00", "on", "next", "monday");
 		List<String> tokens14 = Arrays.asList("expenses", "blaaa", "1pm");
 		
 		List<List<String>> textsList = Arrays.asList(
