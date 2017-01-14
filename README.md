@@ -16,13 +16,68 @@ Die Fallstudie hat die grundlegende Aufgabe Aussagen innerhalb eines Dialoges zu
 Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
 
 ### Beispiele
+*Die Beispiele wurde in der entsprechenden Reihenfolge ausgeführt. So konnte die erstmalige Information zum entsprechenden Projekt für die weiteren Aussagen genutzt werden.*
 
-| Tokens als Array | Verständnis |
-| :------------ | ---------------|
-| "lets", "talk", "about", "current activities", "concerning", "HighNet", "project" | ```json {"restrictedToProject":"highnet","topics":["projectdocuments"]} ``` |
-| "ok", "shall", "we", "look", "at", "tasks", "leading","to", "milestone", "ahead" | "Get tasklist, next milestones restricted to project HighNet" |
-| "that", "sounds", "great", "what", "about", "expenses", "do", "you", "think", "you", "will", "be", "able", "to", "stay", "whithin", "limits", "we", "aggreed", "upon", "last week" | "Get documents about expenses restricted to project HighNet" |
-| "that", "should", "be", "no", "problem", "i", "will", "leave", "detailed", "report", "on", "google", "drive") | "Get Google drive restricted to project HighNet |
+**Tokens:** *"lets", "talk", "about", "current",  "activities", "concerning", "HighNet", "project"*
+
+```json
+  {
+    "restrictedToProject":"highnet",
+    "topics":["projectdocuments"]
+  }
+ ```
+ 
+ **Tokens:** *"ok", "shall", "we", "look", "at", "tasks", "leading","to", "milestone", "ahead"*
+
+```json
+  {
+    "restrictedToProject":"highnet",
+    "topics":["tasklist","milestones"]
+  }
+ ```
+
+**Tokens:** *"that", "should", "be", "no", "problem", "i", "will", "leave", "detailed", "report", "on", "google", "drive"*
+
+```json
+  {
+    "restrictedToProject":"highnet",
+    "topics":["google drive"]
+  }
+```
+
+**Tokens:** *"let", "me", "check", "my", "calendar", "how", "about", "next", "thursday", "at", "16", "hours", "your", "time"*
+
+```json
+  {
+    "restrictedToDate": {
+        "year":2017,
+        "month":1,
+        "day":19
+    },
+    "restrictedToProject":"highnet",
+    "topics":["google calender"]
+  }
+```
+
+**Tokens:** *"Let", "us", "make", "an", "appointment", "for", "next", "Monday", "at", "09", "am"*
+
+```json
+  {
+    "restrictedToDate": {
+      "year":2017,
+      "month":1,
+      "day":16
+    },
+    "restrictedToProject":"highnet",
+    "restrictedToTime": {
+      "hour":9,
+      "minute":0,
+      "second":0,
+      "nano":0
+    },
+    "topics":["google calender"]
+  }
+```
 
 
 ## Contribution
