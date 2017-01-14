@@ -29,7 +29,7 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
   }
 ```
 
- **Tokens:** *"ok", "shall", "we", "look", "at", "tasks", "leading","to", "milestone", "ahead"*
+**Tokens:** *"ok", "shall", "we", "look", "at", "tasks", "leading","to", "milestone", "ahead"*
 
 ```json
   {
