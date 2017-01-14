@@ -8,7 +8,7 @@ Hinweise zur Installation der jeweiligen Implementierung befinden sich im entspr
 *   [`Drools`](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/drools/README.md)
 
 ## Dokumentation
-Die Dokumentation findet sich im Ordner [`docs`](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs).
+Die Dokumentation findet sich im Ordner [`docs`](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs). Zusätzlich können die Dokumente auf der [Webseite](https://purii.github.io/hdm-wim-fallstudie-cep/) des Projektes eingesehen werden.
 
 
 ## Beschreibung der Fallstudie
@@ -19,7 +19,7 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
 
 | Tokens als Array | Verständnis |
 | :------------ | ---------------|
-| "lets", "talk", "about", "current activities", "concerning", "HighNet", "project" | "Get projectdocuments restricted to project HighNet" |
+| "lets", "talk", "about", "current activities", "concerning", "HighNet", "project" | ```json {"restrictedToProject":"highnet","topics":["projectdocuments"]} ``` |
 | "ok", "shall", "we", "look", "at", "tasks", "leading","to", "milestone", "ahead" | "Get tasklist, next milestones restricted to project HighNet" |
 | "that", "sounds", "great", "what", "about", "expenses", "do", "you", "think", "you", "will", "be", "able", "to", "stay", "whithin", "limits", "we", "aggreed", "upon", "last week" | "Get documents about expenses restricted to project HighNet" |
 | "that", "should", "be", "no", "problem", "i", "will", "leave", "detailed", "report", "on", "google", "drive") | "Get Google drive restricted to project HighNet |
