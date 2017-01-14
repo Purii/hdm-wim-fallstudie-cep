@@ -13,12 +13,22 @@ import org.kie.api.runtime.KieSession;
 public class HelloFusion {
 	
 	public static final void main(String[] args) {
+		// ASCII Banner
+		System.out.println(""+
+" ____   _  _    __  __         _        \n"+
+"|  _ \\ (_)| |  |  \\/  |       | |       \n"+
+"| |_) | _ | |_ | \\  / |  __ _ | |_  ___ \n"+
+"|  _ < | || __|| |\\/| | / _` || __|/ _ \\\n"+
+"| |_) || || |_ | |  | || (_| || |_|  __/\n"+
+"|____/ |_| \\__||_|  |_| \\__,_| \\__|\\___|\n"+
+                                        "");
 		// load up the knowledge base
 		KieServices ks = KieServices.Factory.get();
 		KieContainer kContainer = ks.getKieClasspathContainer();
 		// Config in kmodule.xml
 		KieSession kSession = kContainer.newKieSession();
 		
+		// Define tokens
 		List<String> tokens1 = Arrays.asList("Hello");
 		List<String> tokens2 = Arrays.asList("lets", "talk", "about", "current",  "activities", "concerning", "HighNet", "project");
 		List<String> tokens3 = Arrays.asList("ok", "shall", "we", "look", "at", "tasks", "leading","to", "milestone", "ahead" );
