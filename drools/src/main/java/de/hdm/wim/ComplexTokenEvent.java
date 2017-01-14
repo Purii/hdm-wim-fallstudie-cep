@@ -17,63 +17,148 @@ public class ComplexTokenEvent {
 	
 	// Information for Recommender and/or Semantic Group
 	// Alphabetical order!
+
+	/** The Constant CALENDAR. */
 	public static final String CALENDAR = "google calender";
+	
+	/** The Constant COSTDOCUMENTS. */
 	public static final String COSTDOCUMENTS = "documents about expenses";
+	
+	/** The Constant DRIVE. */
 	public static final String DRIVE = "google drive";
+	
+	/** The Constant MILESTONE. */
 	public static final String MILESTONE = "milestones";
+	
+	/** The Constant PROJECTDOCUMENTS. */
 	public static final String PROJECTDOCUMENTS = "projectdocuments";
+	
+	/** The Constant PROJECTPLANNING. */
 	public static final String PROJECTPLANNING = "project plan";
+	
+	/** The Constant PROTOCOL. */
 	public static final String PROTOCOL = "protocol";
+	
+	/** The Constant PROTOCOLCREATION. */
 	public static final String PROTOCOLCREATION = "creation of protocol";
+	
+	/** The Constant TASKLIST. */
 	public static final String TASKLIST = "tasklist";
 	
-	// Information about date/time restriction
+	
+	// Information about date/time relation
+
+	/** The Constant DATERANGE_NEXT. */
 	public static final String DATERANGE_NEXT = "next";
+	
+	/** The Constant DATERANGE_PREV. */
 	public static final String DATERANGE_PREV = "previous";
+	
+	/** The Constant DATE_MONDAY. */
 	public static final String DATE_MONDAY = "monday";
+	
+	/** The Constant DATE_TUESDAY. */
 	public static final String DATE_TUESDAY = "tuesday";
+	
+	/** The Constant DATE_WEDNESDAY. */
 	public static final String DATE_WEDNESDAY = "wednesday";
+	
+	/** The Constant DATE_THURSDAY. */
 	public static final String DATE_THURSDAY = "thursday";
+	
+	/** The Constant DATE_FRIDAY. */
 	public static final String DATE_FRIDAY= "friday";
+	
+	/** The Constant DATE_SATURDAY. */
 	public static final String DATE_SATURDAY = "saturday";
+	
+	/** The Constant DATE_SUNDAY. */
 	public static final String DATE_SUNDAY = "sunday";
 	
-	private LocalDate restrictedToDate;
-	private String restrictedToProject;
-	private LocalTime restrictedToTime;
+	
+	/** The date the ComplexTokenEvent is related to. */
+	private LocalDate relatedToDate;
+	
+	/** The project the ComplexTokenEvent is related to. */
+	private String relatedToProject;
+	
+	/** The time the ComplexTokenEvent is related to. */
+	private LocalTime relatedToTime;
+	
+	/** The topics. */
 	private ArrayList<String> topics = new ArrayList<String>();
 
-	/* 
-	 * @see java.lang.Object#toString()
+	/** 
+	 * Custom toString method
 	 */
 	public String toString() {
-		if(this.getRestrictedToDate() != null) {
-			if(this.getTopics().contains(ComplexTokenEvent.CALENDAR)){
-				this.getTopics().remove(ComplexTokenEvent.CALENDAR);
-				if(this.getTopics().isEmpty()){
-					return "Set new meeting at " + this.getRestrictedToDate().toString()
-						+ " restricted to project " + this.getRestrictedToProject();
-				} else {
-					return "Set new meeting for " + String.join(", ", this.getTopics())
-						+ " restricted to project " + this.getRestrictedToProject()
-						+ " at " + this.getRestrictedToDate().toString();
-				}
-			} else {
-				return "Get " + String.join(", ", this.getTopics())
-					+ " restricted to project " + this.getRestrictedToProject()
-					+ " at " + this.getRestrictedToDate().toString();
-			}
+		if(this.getTopics().contains(ComplexTokenEvent.CALENDAR)){
+			this.getTopics().remove(ComplexTokenEvent.CALENDAR);
+
+			return "Set new meeting " 
+				+ addTopicsToString()
+				+ addRelatedToProjectsToString()
+				+ addDateToString()
+				+ addTimeToString();				
+		} else {
+			return "Get " 
+		                + addTopicsToString()
+				+ addRelatedToProjectsToString()
+				+ addDateToString()
+				+ addTimeToString();
 		}
-		// Need rewrite
-		if(this.getRestrictedToTime() != null) {
-			return "Get " + String.join(", ", this.getTopics())
-			+ " restricted to project " + this.getRestrictedToProject()
-			+ " at " + this.getRestrictedToTime().toString();
-		}
-		return "Get " + String.join(", ", this.getTopics())
-			+ " restricted to project " + this.getRestrictedToProject();
 	}
 	
+	/**
+	 * If there is an related date, it will be added to the string
+	 *
+	 * @return " on " + the related date
+	 */
+	private String addDateToString(){		
+		if(this.getRelatedToDate() == null)
+			return "";
+			
+		return " on " + this.getRelatedToDate().toString();
+	}
+	
+	/**
+	 * If there is an related time, it will be added to the string
+	 *
+	 * @return " at " + the related time
+	 */
+	private String addTimeToString(){	
+		if(this.getRelatedToTime() == null)
+			return "";
+		
+		return " at " + this.getRelatedToTime().toString();
+	}
+	
+	/**
+	 * If there is on or more related topics, it will be added to the string
+	 *
+	 * @return " for " + the related topics
+	 */
+	private String addTopicsToString(){
+		if(this.getTopics().isEmpty())
+			return "";
+
+		return " for " + String.join(", ", this.getTopics());
+	}
+	
+	/**
+	 * If there is an related project, it will be added to the string
+	 *
+	 * @return " related to project " + the name of the project, e.g. "HighNet"
+	 */
+	private String addRelatedToProjectsToString() {
+		return " related to project " + this.getRelatedToProject();
+	}
+	
+	/**
+	 * Converts string to to json.
+	 *
+	 * @return the string
+	 */
 	public String toJson() {
 		Gson gson = new Gson();
 		return gson.toJson(this);
@@ -100,52 +185,56 @@ public class ComplexTokenEvent {
 	}
 
 	/**
-	 * Gets the restricted to project.
+	 * Gets the project the ComplexTokenEvent is related to.
 	 *
-	 * @return the restrictedToProject
+	 * @return string name of the related project
 	 */
-	public String getRestrictedToProject() {
-		return restrictedToProject;
+	public String getRelatedToProject() {
+		return relatedToProject;
 	}
 	
 	/**
-	 * Sets the restricted to project.
+	 * Sets the project, the ComplexTokenEvent is related to.
 	 *
-	 * @param restrictedToProject the restrictedToProject to set
+	 * @param string name of the project
 	 */
-	public void setRestrictedToProject(String restrictedToProject) {
-		this.restrictedToProject = restrictedToProject;
+	public void setRelatedToProject(String relatedToProject) {
+		this.relatedToProject = relatedToProject;
 	}
 
 	/**
-	 * Gets the restricted to time.
+	 * Gets the time, the ComplexTokenEvent is related to.
 	 *
-	 * @return the restrictedToTime
+	 * @return the relatedToTime
 	 */
-	public LocalTime getRestrictedToTime() {
-		return restrictedToTime;
+	public LocalTime getRelatedToTime() {
+		return relatedToTime;
 	}
 	
 	/**
-	 * Sets the restricted to time.
+	 * Sets the time, the ComplexTokenEvent is related to.
 	 *
-	 * @param restrictedToTime the restrictedToTime to set
+	 * @param relatedToTime the relatedToTime to set
 	 */
-	public void setRestrictedToTime(LocalTime restrictedToTime) {
-		this.restrictedToTime = restrictedToTime;
+	public void setRelatedToTime(LocalTime relatedToTime) {
+		this.relatedToTime = relatedToTime;
 	}
 
 	/**
-	 * @return the restrictedToDate
+	 * Gets the date, the ComplexTokenEvent is related to.
+	 *
+	 * @return the relatedToDate
 	 */
-	public LocalDate getRestrictedToDate() {
-		return restrictedToDate;
+	public LocalDate getRelatedToDate() {
+		return relatedToDate;
 	}
 
 	/**
-	 * @param restrictedToDate the restrictedToDate to set
+	 * Sets the date, the ComplexTokenEvent is related to.
+	 *
+	 * @param LocalDate
 	 */
-	public void setRestrictedToDate(LocalDate restrictedToDate) {
-		this.restrictedToDate = restrictedToDate;
+	public void setRelatedToDate(LocalDate relatedToDate) {
+		this.relatedToDate = relatedToDate;
 	}
 }
