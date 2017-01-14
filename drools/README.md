@@ -1,11 +1,9 @@
 # Implementierung mit Drools
 
-## Installation
-Die Installation der Abhängigkeit wird durch Maven durchgeführt.
-
-### Voraussetzungen
+## Voraussetzungen
 
 * >= Java 8
+* Maven
 
 ## Projekt ausführen
 
