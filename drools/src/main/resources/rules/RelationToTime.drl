@@ -29,7 +29,7 @@ declare window LastComplexTokenEvent
 end
 
 
-rule "Identify restriction concering time"
+rule "Identify relation to time"
 	no-loop
 	when
 		$prevToken : Event(
@@ -43,11 +43,11 @@ rule "Identify restriction concering time"
 		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
 	then
 		modify($complexTokenEvent) {
-			setRestrictedToTime(LocalTime.parse( $time ))
+			setRelatedToTime(LocalTime.parse( $time ))
 		}
 end
 
-rule "Translate restriction concering time [0-12]pm/am"
+rule "Translate relation to time [0-12]pm/am"
 	no-loop
 	when
 		$timeEvent : Event(
@@ -61,7 +61,7 @@ rule "Translate restriction concering time [0-12]pm/am"
 		} else if($time24h.endsWith("am")) {
 			$time24h = $time24h.replace("am", "");
 		}
-		// Trigger "Identify restriction concerning time"
+		// Trigger "Identify relation to time"
 		modify($timeEvent) {
 			setToken($time24h + ":00");
 		}
@@ -81,13 +81,13 @@ rule "Merge time format 1 am/pm to 1am/pm"
 		)
 		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
 	then
-		// Does retract work? Won't trigger "restriction concerning time" due missing previous token = "at"
+		// Does retract work? Won't trigger "relation to time" due missing previous token = "at"
 		retract($prevToken);
 		// modify($nextToken) {
 		//	setToken($time + $ampm);
 		// }
 		// Workaround
 		modify($complexTokenEvent) {
-			setRestrictedToTime(LocalTime.parse( $time + ":00" ))
+			setRelatedToTime(LocalTime.parse( $time + ":00" ))
 		}
 end

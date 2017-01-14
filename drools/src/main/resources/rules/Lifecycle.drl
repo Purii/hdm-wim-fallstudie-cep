@@ -21,7 +21,7 @@ rule "Start Lifecycle of ComplexTokenEvent"
 	when
 		LifecycleEvent(token == "start") and
 		not ($ComplexTokenEvent : ComplexTokenEvent(
-				restrictedToProject != null
+				relatedToProject != null
 			) from window LastComplexTokenEvent
 		)
 	then
@@ -35,12 +35,12 @@ rule "Start Lifecycle of ComplexTokenEvent when there is already a project"
 	when
 		(LifecycleEvent(token == "start") and
 		$ComplexTokenEvent : ComplexTokenEvent(
-				restrictedToProject != null
+				relatedToProject != null
 			) from window LastComplexTokenEvent
 		)
 	then
 		ComplexTokenEvent $nextComplexTokenEvent = new ComplexTokenEvent();
-		$nextComplexTokenEvent.setRestrictedToProject($ComplexTokenEvent.getRestrictedToProject());
+		$nextComplexTokenEvent.setRelatedToProject($ComplexTokenEvent.getRelatedToProject());
 		insert($nextComplexTokenEvent);
 end
 

@@ -72,7 +72,7 @@ rule "Identify next {Monday, Tuesday,..}"
 		LocalDate nextDay = today.with( TemporalAdjusters.next( $dayOfWeek ) );
 		retract($prevToken);
 		modify($complexTokenEvent) {
-			setRestrictedToDate(nextDay)
+			setRelatedToDate(nextDay)
 		}
 end
 
@@ -123,6 +123,6 @@ rule "Identify previous {Monday, Tuesday,..}"
 		LocalDate prevDay = today.with( TemporalAdjusters.previous( $dayOfWeek ) );
 		retract($prevToken);
 		modify($complexTokenEvent) {
-			setRestrictedToDate(prevDay)
+			setRelatedToDate(prevDay)
 		}
 end

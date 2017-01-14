@@ -20,9 +20,9 @@ public class MessageListener {
 	
 	private String currentToken;
 	private String prevToken;
-	private boolean nextIsRestriction = false;
+	private boolean nextIsRelated = false;
 	private String requestedObject;
-	private String restriction;
+	private String relation;
 	
 	public MessageListener() {}
 	
@@ -80,46 +80,46 @@ public class MessageListener {
 	}
 	
 	/**
-	 * Sets the next is restriction.
+	 * Sets if the next is related or not.
 	 *
-	 * @param nextIsRestriction the new next is restriction
+	 * @param nextIsRelated
 	 */
-	public void setNextIsRestriction(boolean nextIsRestriction) {
-		this.nextIsRestriction = nextIsRestriction;
+	public void setNextIsRelated(boolean nextIsRelated) {
+		this.nextIsRelated = nextIsRelated;
 	}
 	
 	/**
-	 * Gets the next is restriction.
+	 * Gets if the next is related or not.
 	 *
-	 * @return the next is restriction
+	 * @return true if the next is related
 	 */
-	public boolean getNextIsRestriction() {
-		return this.nextIsRestriction;
+	public boolean getNextIsRelated() {
+		return this.nextIsRelated;
 	}
 
 	/**
-	 * Gets the restriction.
+	 * Gets the relation.
 	 *
-	 * @return the restriction
+	 * @return the relation
 	 */
-	public String getRestriction() {
-		return this.restriction;
+	public String getRelation() {
+		return this.relation;
 	}
 
 	/**
-	 * Sets the restriction.
+	 * Sets the relation.
 	 *
-	 * @param restriction the new restriction
+	 * @param new relation
 	 */
-	public void setRestriction(String restriction) {
-		this.restriction = restriction;
+	public void setRelation(String relation) {
+		this.relation = relation;
 	}
 	
 	/* 
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return this.requestedObject + " restricted to " + this.restriction;
+		return this.requestedObject + " related to " + this.relation;
 	}
 
 	/**

@@ -19,7 +19,7 @@ declare window LastEvents
 end
 
 declare window LastComplexTokenEvent
-	ComplexToken() over window:length(1)
+	ComplexTokenEvent() over window:length(1)
 end
 /*
 rule "Identify 'leading to'"
@@ -38,21 +38,21 @@ rule "Identify 'leading to'"
 		}
 end */
 
-rule "Recognize project based restriction"
+rule "Recognize project based relation"
     // Modify will cause infinite loop
 	no-loop
 	when
-		$expectRestriction : Event(
+		$expectRelation : Event(
 			token == "concerning"
 			|| token == "regarding"
 		) from window LastEvents
-		$restriction : Event(
-			this after $expectRestriction
+		$relation : Event(
+			this after $expectRelation
 		)
 		// Only most recent ComplexTokenEvent
 		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
 	then
 		modify($complexTokenEvent) {
-			setRestrictedToProject($restriction.getToken())
+			setRelatedToProject($relation.getToken())
 		}
 end

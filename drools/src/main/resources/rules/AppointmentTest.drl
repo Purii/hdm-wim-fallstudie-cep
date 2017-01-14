@@ -48,7 +48,7 @@ rule "Check last tokens if Date"
 		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
     then
         modify($complexTokenEvent) {
-			setRestrictedToDate($day.getToken())
+			setRelatedToDate($day.getToken())
 		}
 		System.out.println("Set meeting for " + $day.getToken() + ".");
 end

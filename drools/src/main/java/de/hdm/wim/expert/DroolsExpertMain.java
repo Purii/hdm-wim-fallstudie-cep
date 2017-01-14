@@ -13,7 +13,7 @@ public class DroolsExpertMain {
     public static final void main(String[] args) {
         try {
             // load up the knowledge base
-	        KieServices ks = KieServices.Factory.get();
+	    KieServices ks = KieServices.Factory.get();
     	    KieContainer kContainer = ks.getKieClasspathContainer();
     	    execute(kContainer);
         } catch (Throwable t) {

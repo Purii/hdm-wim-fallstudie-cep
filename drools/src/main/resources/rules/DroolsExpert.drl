@@ -23,7 +23,7 @@ rule "Identify projectdocuments"
 
 end
 
-rule "Recognize restriction"
+rule "Recognize relation"
     when
         //conditions
         ml : MessageListener(
@@ -36,21 +36,21 @@ rule "Recognize restriction"
         	)
     then
         //actions
-        ml.setNextIsRestriction(true);
+        ml.setNextIsRelated(true);
 
 end
 
-rule "Add restriction"
+rule "Add relation"
     when
         //conditions
         ml : MessageListener(
         		prevToken != currentToken
-        		&& ml.nextIsRestriction
+        		&& ml.nextIsRelated
         		&& requestedObject == MessageListener.PROJECTDOCUMENTS
-        		, restriction : currentToken
+        		, relation : currentToken
         	)
     then
         //actions
-        ml.setRestriction(restriction);
+        ml.setRelation(relation);
 
 end
