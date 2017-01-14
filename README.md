@@ -25,8 +25,8 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
     "restrictedToProject":"highnet",
     "topics":["projectdocuments"]
   }
- ```
- 
+```
+
  **Tokens:** *"ok", "shall", "we", "look", "at", "tasks", "leading","to", "milestone", "ahead"*
 
 ```json
@@ -34,7 +34,7 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
     "restrictedToProject":"highnet",
     "topics":["tasklist","milestones"]
   }
- ```
+```
 
 **Tokens:** *"that", "should", "be", "no", "problem", "i", "will", "leave", "detailed", "report", "on", "google", "drive"*
 
