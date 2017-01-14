@@ -12,6 +12,10 @@ Hinweise zur Installation der jeweiligen Implementierung befinden sich im entspr
 *   [Definition von Regeln](/hdm-wim-fallstudie-cep/Regeln)
 *   [Lizenzen genutzter Abhängigkeiten](/hdm-wim-fallstudie-cep/ThirdPartyLicenses)
 
+### Gesprächsprotokolle
+*   [24.10.2016](/hdm-wim-fallstudie-cep/2016-10/Okt-24)
+** Chris: Führst Du das bitte weiter? (+Fix der Formatierung: Leerzeichen nach ##...)
+
 
 ## Beschreibung der Fallstudie
 Die Fallstudie hat die grundlegende Aufgabe Aussagen innerhalb eines Dialoges zu verstehen (siehe Aufgabenbeschreibung der Vorlesung). Die Aussagen werden dabei isoliert betrachtet. Ein grundlegendes Verständnis durch die Verknüpfung einzelner Aussagen findet nur bedingt statt.

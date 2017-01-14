@@ -1,10 +1,10 @@
-#Sprechstunde
+# Sprechstunde
 
-###Nur Drools & Esper als Produkte vergleichen?
+### Nur Drools & Esper als Produkte vergleichen?
 
 Mehrere Produkte; Vorstellen und mit Kostenkriterium ausschließen
 
-###Entwicklung in diesem Semester?
+### Entwicklung in diesem Semester?
 
 Technologiescouting
 Fallstudie; beispielhafte Implementierung; Prototyp
@@ -16,14 +16,14 @@ Technologie an konkretem Beispiel vorführen
 Anwendungsbereich klären (Art von Events, Kombination)
 “sprachliche Äußerung” als Richtung im Anwendungsbereich
 
-###Klärung der Stellung im Projekt (Herz)
+### Klärung der Stellung im Projekt (Herz)
 
-zentrale Komponente; 
+zentrale Komponente;
 regelbasierte Systeme (Erstellung von Regeln)
 
 Implementierungsprojekt
 
-z.B. Events aus Textdatei verarbeiten; 
+z.B. Events aus Textdatei verarbeiten;
 Web-Service als Schnittstelle
 
-###Struktur vorstellen
+### Struktur vorstellen
