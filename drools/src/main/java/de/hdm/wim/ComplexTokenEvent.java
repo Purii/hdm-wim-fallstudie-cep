@@ -142,7 +142,7 @@ public class ComplexTokenEvent {
 		if(this.getTopics().isEmpty())
 			return "";
 
-		return " for " + String.join(", ", this.getTopics());
+		return String.join(", ", this.getTopics());
 	}
 	
 	/**
@@ -151,7 +151,7 @@ public class ComplexTokenEvent {
 	 * @return " related to project " + the name of the project, e.g. "HighNet"
 	 */
 	private String addRelatedToProjectsToString() {
-		return " related to project " + this.getRelatedToProject();
+		return "related to project " + this.getRelatedToProject();
 	}
 	
 	/**
