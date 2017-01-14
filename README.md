@@ -22,7 +22,7 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
 
 ```json
   {
-    "restrictedToProject":"highnet",
+    "relatedToProject":"highnet",
     "topics":["projectdocuments"]
   }
 ```
@@ -31,7 +31,7 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
 
 ```json
   {
-    "restrictedToProject":"highnet",
+    "relatedToProject":"highnet",
     "topics":["tasklist","milestones"]
   }
 ```
@@ -40,7 +40,7 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
 
 ```json
   {
-    "restrictedToProject":"highnet",
+    "relatedToProject":"highnet",
     "topics":["google drive"]
   }
 ```
@@ -49,12 +49,12 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
 
 ```json
   {
-    "restrictedToDate": {
+    "relatedToDate": {
         "year":2017,
         "month":1,
         "day":19
     },
-    "restrictedToProject":"highnet",
+    "relatedToProject":"highnet",
     "topics":["google calender"]
   }
 ```
@@ -63,13 +63,13 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
 
 ```json
   {
-    "restrictedToDate": {
+    "relatedToDate": {
       "year":2017,
       "month":1,
       "day":16
     },
-    "restrictedToProject":"highnet",
-    "restrictedToTime": {
+    "relatedToProject":"highnet",
+    "relatedToTime": {
       "hour":9,
       "minute":0,
       "second":0,
