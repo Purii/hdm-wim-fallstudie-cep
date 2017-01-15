@@ -8,12 +8,12 @@ Hinweise zur Installation der jeweiligen Implementierung befinden sich im entspr
 *   [`Drools`](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/drools/README.md)
 
 ## Dokumentation
-*   [Eventklassen](/hdm-wim-fallstudie-cep/tree/master/docs/Eventklassen.md)
-*   [Definition von Regeln](/hdm-wim-fallstudie-cep/docs/Regeln.md)
-*   [Lizenzen genutzter Abhängigkeiten](/hdm-wim-fallstudie-cep/docs/ThirdPartyLicenses.md)
+*   [Eventklassen](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/Eventklassen.md)
+*   [Definition von Regeln](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/Regeln.md)
+*   [Lizenzen genutzter Abhängigkeiten](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/ThirdPartyLicenses.md)
 
 ### Gesprächsprotokolle
-*   [24.10.2016](/hdm-wim-fallstudie-cep/docs/2016-10/Okt-24.md)
+*   [24.10.2016](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/Eventklassen.md)
 *   [07.11.2016](/hdm-wim-fallstudie-cep/docs/2016-11/Nov-07.md)
 *   [05.12.2016](/hdm-wim-fallstudie-cep/docs/2016-12/Dez-05.md)
 *   [12.12.2016](/hdm-wim-fallstudie-cep/docs/2016-12/Dez-12.md)
