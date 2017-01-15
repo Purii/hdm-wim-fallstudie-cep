@@ -8,9 +8,9 @@ Hinweise zur Installation der jeweiligen Implementierung befinden sich im entspr
 *   [`Drools`](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/drools/README.md)
 
 ## Dokumentation
-*   [Eventklassen](/hdm-wim-fallstudie-cep/Eventklassen)
-*   [Definition von Regeln](/hdm-wim-fallstudie-cep/Regeln)
-*   [Lizenzen genutzter Abhängigkeiten](/hdm-wim-fallstudie-cep/ThirdPartyLicenses)
+*   [Eventklassen](/docs/Eventklassen)
+*   [Definition von Regeln](/docs/Regeln)
+*   [Lizenzen genutzter Abhängigkeiten](/docs/ThirdPartyLicenses)
 
 ### Gesprächsprotokolle
 *   [24.10.2016](/docs/2016-10/Okt-24.md)
