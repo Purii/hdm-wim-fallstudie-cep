@@ -13,12 +13,16 @@ Hinweise zur Installation der jeweiligen Implementierung befinden sich im entspr
 *   [Lizenzen genutzter Abhängigkeiten](/hdm-wim-fallstudie-cep/ThirdPartyLicenses)
 
 ### Gesprächsprotokolle
-*   [24.10.2016](/hdm-wim-fallstudie-cep/2016-10/Okt-24)
-*   [07.11.2016](/hdm-wim-fallstudie-cep/2016-11/Nov-07)
-
-
-*Chris: Führst Du das bitte weiter? (+Fix der Formatierung: Leerzeichen nach ##...)*
-
+*   [24.10.2016](/hdm-wim-fallstudie-cep/docs/2016-10/Okt-24.md)
+*   [07.11.2016](/hdm-wim-fallstudie-cep/docs/2016-11/Nov-07.md)
+*   [05.12.2016](/hdm-wim-fallstudie-cep/docs/2016-12/Dez-05.md)
+*   [12.12.2016](/hdm-wim-fallstudie-cep/docs/2016-12/Dez-12.md)
+*   [19.12.2016](/hdm-wim-fallstudie-cep/docs/2016-12/Dez-19.md)
+*   [21.12.2016](/hdm-wim-fallstudie-cep/docs/2016-12/Dez-21.md)
+*   [09.01.2017](/hdm-wim-fallstudie-cep/docs/2016-12/Jan-09.md)
+*   [10.01.2017](/hdm-wim-fallstudie-cep/docs/2016-12/Jan-10.md)
+*   [12.01.2017](/hdm-wim-fallstudie-cep/docs/2016-12/Jan-12.md)
+*   [16.01.2017](/hdm-wim-fallstudie-cep/docs/2016-12/Jan-16.md)
 
 ## Beschreibung der Fallstudie
 Die Fallstudie hat die grundlegende Aufgabe Aussagen innerhalb eines Dialoges zu verstehen (siehe Aufgabenbeschreibung der Vorlesung). Die Aussagen werden dabei isoliert betrachtet. Ein grundlegendes Verständnis durch die Verknüpfung einzelner Aussagen findet nur bedingt statt.
