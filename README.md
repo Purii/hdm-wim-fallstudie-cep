@@ -82,3 +82,6 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
 
 ## Contribution
 Als Teil des Projektes wird eine `editorconfig` bereit gestellt. Diese erleichtert eine einheitliche Formatierung des Quelltextes. So werden einheitlich Tabs, statt Spaces bevorzugt (siehe [`Java Code Conventions`](http://www.oracle.com/technetwork/java/javase/documentation/codeconventions-136091.html)). Viele Editoren verstehen die Anweisungen dieser Datei ohne Anpassungen. Für Eclipse wird jedoch das Plugin [`editorconfig-eclipse`](https://marketplace.eclipse.org/content/editorconfig-eclipse) benötigt.
+
+## Apache Flink als Alternative zu Drools
+Wie aus unsere Analyse der CEP Tools hervorgegangen ist, gibt es eine Alternative zu Drools, welche unseren Anforderungen entspricht: [Apache Flink](http://flink.apache.org/). Es wird versucht das selbe Fallbeispiel mit Apache Flink nachzubauen, um einen Vergleich zu ermöglichen. Der Fortschritt des Projekts kann [hier](https://github.com/itsBen/hdm-wim-fallstudie-cep-flink) verfolgt werden. 
