@@ -14,6 +14,8 @@ Hinweise zur Installation der jeweiligen Implementierung befinden sich im entspr
 
 ### Gesprächsprotokolle
 *   [24.10.2016](/hdm-wim-fallstudie-cep/2016-10/Okt-24)
+*   [07.11.2016](/hdm-wim-fallstudie-cep/2016-11/Nov-07)
+
 
 *Chris: Führst Du das bitte weiter? (+Fix der Formatierung: Leerzeichen nach ##...)*
 
