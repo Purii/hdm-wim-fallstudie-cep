@@ -31,7 +31,7 @@ public class TextRunner {
 	}
 	
 	/**
-	 * Insert and fire lifecycle.
+	 * Insert and fire lifecycle
 	 *
 	 * @param kSession the k session
 	 * @param token the token
@@ -42,7 +42,7 @@ public class TextRunner {
 	}
     
 	/**
-	 * Run all text arrays.
+	 * Run all text arrays
 	 *
 	 * @param kSession the k session
 	 */
