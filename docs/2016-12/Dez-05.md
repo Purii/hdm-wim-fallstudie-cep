@@ -1,4 +1,4 @@
-#Gruppentreff
+# Gruppentreff
 
 ### Einrichtung des GitHub-Repositories
 
@@ -23,6 +23,3 @@
 ### Durchführung eines beispielhaften Drools-Projektes in Eclipse
 
 ### Festlegung des nächsten Treffpunktes
-
-
-#
