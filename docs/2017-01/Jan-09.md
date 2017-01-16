@@ -1,10 +1,10 @@
-#Gruppentreff
+# Gruppentreff
 
-###Festlegung des Dialogs
+### Festlegung des Dialogs
 
 Ausgewählt wurde das Beispiel aus der Fallstudie v. Prof. Rathke
 Weitere Sätze werden ggf. hinzugefügt
 
-###Besprechung der Arbeitsweise des Systems
+### Besprechung der Arbeitsweise des Systems
 
-###Programmierung in Drools Fusion
+### Programmierung in Drools Fusion
