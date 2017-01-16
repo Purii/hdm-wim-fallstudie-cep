@@ -5,6 +5,7 @@
 
 ## Installation
 Hinweise zur Installation der jeweiligen Implementierung befinden sich im entsprechenden Ordner:
+
 *   [`Drools`](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/drools/README.md)
 
 ## Dokumentation
