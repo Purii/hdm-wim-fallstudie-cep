@@ -2,7 +2,6 @@
 
 *Hinweis: Bei diesem Projekt handelt es sich um ein Forschungsprojekt der Hochschule der Medien, Stuttgart.*
 
-
 ## Installation
 Hinweise zur Installation der jeweiligen Implementierung befinden sich im entsprechenden Ordner:
 
@@ -79,7 +78,6 @@ Die Aussagen werden in Form einzelner Tokens empfangen und weiterverarbeitet.
     "topics":["google calender"]
   }
 ```
-
 
 ## Contribution
 Als Teil des Projektes wird eine `editorconfig` bereit gestellt. Diese erleichtert eine einheitliche Formatierung des Quelltextes. So werden einheitlich Tabs, statt Spaces bevorzugt (siehe [`Java Code Conventions`](http://www.oracle.com/technetwork/java/javase/documentation/codeconventions-136091.html)). Viele Editoren verstehen die Anweisungen dieser Datei ohne Anpassungen. Für Eclipse wird jedoch das Plugin [`editorconfig-eclipse`](https://marketplace.eclipse.org/content/editorconfig-eclipse) benötigt.
