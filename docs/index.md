@@ -8,21 +8,21 @@ Hinweise zur Installation der jeweiligen Implementierung befinden sich im entspr
 *   [`Drools`](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/drools/README.md)
 
 ## Dokumentation
-*   [Eventklassen](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/Eventklassen.md)
-*   [Definition von Regeln](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/Regeln.md)
-*   [Lizenzen genutzter Abhängigkeiten](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/ThirdPartyLicenses.md)
+*   [Eventklassen](Eventklassen.md)
+*   [Definition von Regeln](Regeln.md)
+*   [Lizenzen genutzter Abhängigkeiten](ThirdPartyLicenses.md)
 
 ### Gesprächsprotokolle
 *   [24.10.2016](2016-10/Okt-24.md)
-*   [07.11.2016](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/2016-11/Nov-07.md)
-*   [05.12.2016](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/2016-12/Dez-05.md)
-*   [12.12.2016](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/2016-12/Dez-12.md)
-*   [19.12.2016](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/2016-12/Dez-19.md)
-*   [21.12.2016](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/2016-12/Dez-21.md)
-*   [09.01.2017](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/2017-01/Jan-09.md)
-*   [10.01.2017](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/2017-01/Jan-10.md)
-*   [12.01.2017](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/2017-01/Jan-12.md)
-*   [16.01.2017](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/docs/2017-01/Jan-16.md)
+*   [07.11.2016](2016-11/Nov-07.md)
+*   [05.12.2016](2016-12/Dez-05.md)
+*   [12.12.2016](2016-12/Dez-12.md)
+*   [19.12.2016](2016-12/Dez-19.md)
+*   [21.12.2016](2016-12/Dez-21.md)
+*   [09.01.2017](2017-01/Jan-09.md)
+*   [10.01.2017](2017-01/Jan-10.md)
+*   [12.01.2017](2017-01/Jan-12.md)
+*   [16.01.2017](2017-01/Jan-16.md)
 
 ## Beschreibung der Fallstudie
 Die Fallstudie hat die grundlegende Aufgabe Aussagen innerhalb eines Dialoges zu verstehen (siehe Aufgabenbeschreibung der Vorlesung). Die Aussagen werden dabei isoliert betrachtet. Ein grundlegendes Verständnis durch die Verknüpfung einzelner Aussagen findet nur bedingt statt.
