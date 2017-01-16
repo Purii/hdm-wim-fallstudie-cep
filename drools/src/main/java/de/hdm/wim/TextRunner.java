@@ -50,6 +50,8 @@ public class TextRunner {
 		this.texts.stream().forEach(text -> {
 			System.out.println("-----------");
 			insertAndFireLifecycle(kSession, "start");
+			System.out.println("Person: " + text.toString());
+			System.out.print("System: ");
 			text.stream().forEach(token -> { insertAndFire(kSession, token); });
 			insertAndFireLifecycle(kSession, "end");
 		});
