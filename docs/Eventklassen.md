@@ -24,8 +24,10 @@ public void runAllTextArrays(KieSession kSession) {
 			insertAndFireLifecycle(kSession, "end");
 		});
 	}
- ```
+```
+
 Die Methode insertAndFireLifecycle wird für jeden Array ausgelöst.
+
 
 ```java
 private static void insertAndFireLifecycle(KieSession kSession, String token) {
@@ -57,11 +59,15 @@ Hierzu gehören Topics
 ```java
 public static final String DRIVE = "google drive";
 ```
+
 und Zeitbezüge
+
 ```java
 public static final String DATERANGE_PREV = "previous";
 ```
+
 Die Regeln können verschiedene Methoden der Klasse triggern. Beispielsweise das Hinzufügen eines Datums an die Ausgabe
+
 ```java
 private String addDateToString(){		
 		if(this.getRelatedToDate() == null)
@@ -70,8 +76,10 @@ private String addDateToString(){
 		return " on " + this.getRelatedToDate().toString();
 	}
 ```
+
 oder eines Topic
-```
+
+```java
 private String addTopicsToString(){
 		if(this.getTopics().isEmpty())
 			return "";
@@ -79,5 +87,3 @@ private String addTopicsToString(){
 		return String.join(", ", this.getTopics());
 	}
 ``` 
-
-
