@@ -1,14 +1,14 @@
-#Gruppentreff
+# Gruppentreff
 
-###Festlegung der Token-Beziehungen
+### Festlegung der Token-Beziehungen
 
 Ableitung der komplexen Events pro Satz
 
-###Programmierung des Systems
+### Programmierung des Systems
 
 Festlegung der Regeln, Topics
 
-###Einarbeitung Apache Flink
+### Einarbeitung Apache Flink
 
 Aufsetzen des Systems
 Durchführung eines Beispiel-Projektes
