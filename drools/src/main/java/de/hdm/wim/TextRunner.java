@@ -13,7 +13,7 @@ public class TextRunner {
 	private List<List<String>> texts;
 	
 	/**
-	 * Insert and fire.
+	 * Insert and fire
 	 *
 	 * @param kSession the k session
 	 * @param token the token
