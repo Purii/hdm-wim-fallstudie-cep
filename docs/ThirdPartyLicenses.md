@@ -1,7 +1,6 @@
 # Third Party Libraries and Frameworks
 
 ## [drools](https://github.com/droolsjbpm/drools)
-
 ```
 
                                  Apache License
