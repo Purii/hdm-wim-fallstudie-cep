@@ -3,6 +3,7 @@
 ## ComplexTokenEvent
 
 
+
 ## Einheitliches Vokabular
 Bei der Definition der Regeln ist auf ein einheitliches Vokabular zu achten.
 Aus diesem Grund können die Regeln zwei Kategorien zugeordnet werden. So existieren Regeln, welche einzelne Ausdrücke, welche aus mehreren Worten bestehen, zu einem einheitlichen Vokabular zusammenzufassen. Andere Regeln können anschließend auf diesem einheitlichen Vokabular aufbauen, um aus den einzelenen Tokens sinnvolle Informationen zu generieren.
