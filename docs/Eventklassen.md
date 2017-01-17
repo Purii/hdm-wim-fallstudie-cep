@@ -28,7 +28,6 @@ public void runAllTextArrays(KieSession kSession) {
 
 Die Methode insertAndFireLifecycle wird für jeden Array ausgelöst.
 
-
 ```java
 private static void insertAndFireLifecycle(KieSession kSession, String token) {
 		kSession.insert(new LifecycleEvent(token));
