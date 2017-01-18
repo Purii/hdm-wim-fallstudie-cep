@@ -88,4 +88,4 @@ private String addTopicsToString(){
 ``` 
 Klassendiagramm 
 
-![alt text](https://github.com/Purii/hdm-wim-fallstudie-cep/blob/master/docs/Kolo.jpg "")
+![alt text](https://github.com/Purii/hdm-wim-fallstudie-cep/blob/master/docs/Kolo.png "")
