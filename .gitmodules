@@ -1,3 +1,3 @@
 [submodule "apacheflink"]
 	path = apacheflink
-	url = git@github.com:itsBen/hdm-wim-fallstudie-cep-flink.git
+	url = https://github.com/itsBen/hdm-wim-fallstudie-cep-flink.git
