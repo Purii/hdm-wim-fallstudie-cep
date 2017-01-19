@@ -6,6 +6,19 @@
 ## Installation
 Hinweise zur Installation der jeweiligen Implementierung befinden sich im entsprechenden Ordner:
 *   [`Drools`](https://github.com/Purii/hdm-wim-fallstudie-cep/tree/master/drools/README.md)
+*   [`Apache Flink`](https://github.com/itsBen/hdm-wim-fallstudie-cep-flink/blob/master/README.md)
+
+
+### Klonen
+Die Implementierung mit `Apache Flink` wurde in einem separaten GitHub Repository entwickelt.
+Dieses separate Repository wurde deshalb als Git submodule dem Hauptrepository hinzugefügt.
+Um das gesamte Projekt zu klonen muss deshalb folgender Befehl genutzt werden:
+
+```sh
+git clone --recursive git@github.com:Purii/hdm-wim-fallstudie-cep.git
+// Bzw.
+git clone --recursive https://github.com/Purii/hdm-wim-fallstudie-cep.git
+```
 
 ## Dokumentation
 *   [Eventklassen](Eventklassen.md)
