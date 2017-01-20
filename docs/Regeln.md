@@ -1,6 +1,10 @@
 # Business rules
 
-## ComplexTokenEvent
+## LifecycleEvent
+Das LifecycleEvent bestimmt die Vorgehensweise unseres Programms. FÜr jede neue Aussage, d.h. Wechsel zwischen dem Sprechenden, wird ein neues ComplexTokenEvent gebildet und dann mit den Informationen dieser Aussage angereichert. Zum Abschluss der Aussage wird das ComplexTokenEvent ausgegeben.
+
+Daher wurde eine LifecycleEvent.java definiert. Diese kennzeichnet den Beginn und das Ende einer Aussage mithilfe ihrer Variable 'Token'.
+Ist diese auf 'start' gesetzt, so wird ein neues ComplexTokenEvent erstellt. Folgt schließlich ein LifecycleEvent mit dem Token 'end', so wird die Ausgabe der Inhalte des ComplexTokenEvents getriggert.
 
 
 
