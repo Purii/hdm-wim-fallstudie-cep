@@ -88,8 +88,10 @@ public class ComplexTokenEvent {
 	/** The topics. */
 	private ArrayList<String> topics = new ArrayList<String>();
 
-	/** 
-	 * Custom toString method
+	/**
+	 * Custom toString method.
+	 *
+	 * @return the string
 	 */
 	public String toString() {
 		if(this.getTopics().contains(ComplexTokenEvent.CALENDAR)){
@@ -110,7 +112,7 @@ public class ComplexTokenEvent {
 	}
 	
 	/**
-	 * If there is an related date, it will be added to the string
+	 * If there is an related date, it will be added to the string.
 	 *
 	 * @return " on " + the related date
 	 */
@@ -122,7 +124,7 @@ public class ComplexTokenEvent {
 	}
 	
 	/**
-	 * If there is an related time, it will be added to the string
+	 * If there is an related time, it will be added to the string.
 	 *
 	 * @return " at " + the related time
 	 */
@@ -134,7 +136,7 @@ public class ComplexTokenEvent {
 	}
 	
 	/**
-	 * If there is on or more related topics, it will be added to the string
+	 * If there is on or more related topics, it will be added to the string.
 	 *
 	 * @return " for " + the related topics
 	 */
@@ -146,7 +148,7 @@ public class ComplexTokenEvent {
 	}
 	
 	/**
-	 * If there is an related project, it will be added to the string
+	 * If there is an related project, it will be added to the string.
 	 *
 	 * @return " related to project " + the name of the project, e.g. "HighNet"
 	 */
@@ -196,7 +198,7 @@ public class ComplexTokenEvent {
 	/**
 	 * Sets the project, the ComplexTokenEvent is related to.
 	 *
-	 * @param string name of the project
+	 * @param relatedToProject the new related to project
 	 */
 	public void setRelatedToProject(String relatedToProject) {
 		this.relatedToProject = relatedToProject;
@@ -232,7 +234,7 @@ public class ComplexTokenEvent {
 	/**
 	 * Sets the date, the ComplexTokenEvent is related to.
 	 *
-	 * @param LocalDate
+	 * @param relatedToDate the new related to date
 	 */
 	public void setRelatedToDate(LocalDate relatedToDate) {
 		this.relatedToDate = relatedToDate;

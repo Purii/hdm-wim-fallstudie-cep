@@ -5,11 +5,17 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.FactHandle;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is a sample class to launch a rule.
  */
 public class DroolsExpertMain {
 
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static final void main(String[] args) {
         try {
             // load up the knowledge base

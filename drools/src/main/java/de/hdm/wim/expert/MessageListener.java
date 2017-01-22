@@ -115,8 +115,8 @@ public class MessageListener {
 		this.relation = relation;
 	}
 	
-	/* 
-	 * @see java.lang.Object#toString()
+	/** 
+	 * custom toString method
 	 */
 	public String toString() {
 		return this.requestedObject + " related to " + this.relation;
