@@ -28,14 +28,13 @@ declare window LastComplexTokenEvent
 	ComplexTokenEvent() over window:length(1)
 end
 
-
+// Die Regel greift unter folgenden Bedingungen:
+// Wenn zun‰chst ein Event mit dem Token "at" erkannt wird
+// und im direkten Anschluss ein Event f‰llt, welches einen Token gem‰ﬂ des definierten regul‰ren Ausdrucks enth‰lt
+// Anschlieﬂend wird das Attribut "relatedToTime" des ComplexTokenEvents gesetzt
 rule "Identify relation to time"
 	no-loop
 	when
-	// wenn innerhalb des Fensters "LastEvents" der Token "at" f‰llt, wird
-	// gepr¸ft ob darauf ein Token f‰llt der dem Reguk‰ren Ausdruck entspricht.
-	// Anschlieﬂend wird dann ein ComplexTokenEvent erstellt, dessen setRelatedToTime property
-	// die vereinheitlichte Zeit enth‰lt.
 		$prevToken : Event(
 			token == "at"
 		) from window LastEvents
@@ -86,7 +85,8 @@ rule "Merge time format 1 am/pm to 1am/pm"
 		)
 		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
 	then
-		// Does retract work? Won't trigger "relation to time" due missing previous token = "at"
+		// Ausblick zweites Semester:
+		// Does retract work? Won't trigger "relation to time" due missing previous token == "at"
 		retract($prevToken);
 		// modify($nextToken) {
 		//	setToken($time + $ampm);

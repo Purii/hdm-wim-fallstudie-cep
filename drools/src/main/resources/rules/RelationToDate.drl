@@ -26,6 +26,10 @@ declare window LastComplexTokenEvent
 	ComplexTokenEvent() over window:length(1)
 end
 
+// Die Regel greift unter folgenden Bedingungen:
+// Wenn zunächst ein Event mit dem Token "next" erkannt wird
+// und im direkten Anschluss ein Event fällt, welches einen Token mit einem Wochentag enthält
+// Auf dieser Basis kann ein konkretes Datum berechnet werden und das Attribut "relatedToDate" des ComplexTokenEvents gesetzt werden
 rule "Identify next {Monday, Tuesday,..}"
 	when
 		$prevToken : Event(
@@ -76,6 +80,10 @@ rule "Identify next {Monday, Tuesday,..}"
 		}
 end
 
+// Die Regel greift unter folgenden Bedingungen:
+// Wenn zunächst ein Event mit dem Token "previous" erkannt wird
+// und im direkten Anschluss ein Event fällt, welches einen Token mit einem Wochentag enthält
+// Auf dieser Basis kann ein konkretes Datum berechnet werden und das Attribut "relatedToDate" des ComplexTokenEvents gesetzt werden
 rule "Identify previous {Monday, Tuesday,..}"
 	when
 		$prevToken : Event(

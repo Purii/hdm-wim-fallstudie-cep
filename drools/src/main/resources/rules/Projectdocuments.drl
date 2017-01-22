@@ -27,11 +27,10 @@ declare window LastComplexTokenEvent
 end
 
 rule "Identify topic projectdocuments"
-	// Modify will cause infinite loop
 	no-loop
 	when
 		Event(
-			 token == "documents"
+			token == "documents"
 			|| token == ComplexTokenEvent.PROJECTDOCUMENTS
 		) from window CurrentEvent
 		// Only most recent ComplexTokenEvent
@@ -42,6 +41,7 @@ rule "Identify topic projectdocuments"
 		}
 end
 
+// Durch Aggregation kann aus zwei Events ein einzelnes Event mit vereinheitlichtem Vokabular erstellt werden
 rule "Merge separated current activities"
 	when
 		$prevToken : Event(
@@ -58,8 +58,7 @@ rule "Merge separated current activities"
 		}
 end
 
-rule "Merge separated cost documents"
-	// Modify will cause infinite loop
+rule "Identify cost documents"
 	no-loop
 	when
 		Event(

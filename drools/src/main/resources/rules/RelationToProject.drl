@@ -21,25 +21,8 @@ end
 declare window LastComplexTokenEvent
 	ComplexTokenEvent() over window:length(1)
 end
-/*
-rule "Identify 'leading to'"
-	when
-		$prevToken : Event(
-			token == "leading"
-		) from window LastEvents
-		$postfix : Event (
-			token == "to",
-			this after $prevToken
-		)
-	then
-		retract($prevToken);
-		modify($postfix) {
-			setToken("concerning");
-		}
-end */
 
 rule "Recognize project based relation"
-    // Modify will cause infinite loop
 	no-loop
 	when
 		$expectRelation : Event(
@@ -49,7 +32,6 @@ rule "Recognize project based relation"
 		$relation : Event(
 			this after $expectRelation
 		)
-		// Only most recent ComplexTokenEvent
 		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
 	then
 		modify($complexTokenEvent) {

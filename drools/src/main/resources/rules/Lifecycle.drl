@@ -15,6 +15,8 @@ declare window LastComplexTokenEvent
 	ComplexTokenEvent() over window:length(1)
 end
 
+// Lifecycle wird gestartet:
+// Neues ComplexTokenEvent anlegen, ohne Vorbelegung möglicher Attribute
 rule "Start Lifecycle of ComplexTokenEvent"
 	// Modify will cause infinite loop
 	lock-on-active
@@ -28,7 +30,9 @@ rule "Start Lifecycle of ComplexTokenEvent"
 		insert(new ComplexTokenEvent());
 end
 
-
+// Lifecycle wird gestartet / Alternative "mit Vorbelegung":
+// ComplexTokenEvent anlegen, mit Vorbelegung des Attributes "relatedToProject"
+// Regel greift nur, wenn unmittelbar davor bereits ein ComplexTokenEvent mit entsprechenden Attribut existiert
 rule "Start Lifecycle of ComplexTokenEvent when there is already a project"
 	// Modify will cause infinite loop
 	lock-on-active
@@ -44,14 +48,15 @@ rule "Start Lifecycle of ComplexTokenEvent when there is already a project"
 		insert($nextComplexTokenEvent);
 end
 
-
+// Lifecycle wird beendet:
+// ComplexTokenEvent mit allen Attributen wird ausgegeben
 rule "End Lifecycle of ComplexTokenEvent"
 	// Modify will cause infinite loop
 	lock-on-active
 	when
 		LifecycleEvent(token == "end")
 		// Only most recent ComplexTokenEvent
-		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent  	
+		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
 	then
 		//System.out.println($complexTokenEvent);
 		System.out.println($complexTokenEvent.toJson());

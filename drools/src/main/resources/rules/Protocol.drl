@@ -18,7 +18,6 @@ declare window CurrentEvent
 	Event() over window:length(1)
 end
 
-
 rule "Recognize greeting which leads to protocol(s)"
 	no-loop
 	when

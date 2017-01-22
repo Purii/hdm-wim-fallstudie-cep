@@ -28,7 +28,6 @@ declare window LastComplexTokenEvent
 end
 
 rule "Identify Milestone"
-	// Modify will cause infinite loop
 	no-loop
 	when
 		Event(
@@ -44,7 +43,6 @@ rule "Identify Milestone"
 end
 
 rule "Identify Tasklist"
-	// Modify will cause infinite loop
 	no-loop
 	when
 		Event(
@@ -59,6 +57,7 @@ rule "Identify Tasklist"
 		}
 end
 
+// Durch Aggregation kann aus zwei Events ein einzelnes Event mit vereinheitlichtem Vokabular erstellt werden
 rule "Merge separated Tasklist"
 	when
 		$prevToken : Event(
