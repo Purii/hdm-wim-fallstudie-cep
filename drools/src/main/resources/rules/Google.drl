@@ -36,7 +36,7 @@ rule "Identify (Google) Calendar"
 			|| token == "meeting"
 			|| token == "calendar"
 		) from window CurrentEvent
-		// Nur aktuellsten und damit geltenden ComplexTokenEvent beachten
+		// Nur aktuellstes und damit geltendes ComplexTokenEvent beachten
 		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
 	then
 		modify($complexTokenEvent) {

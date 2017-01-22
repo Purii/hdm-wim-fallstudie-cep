@@ -48,7 +48,7 @@ rule "Identify Google Drive"
        		|| token == "Google drive"
        		|| token == ComplexToken.DRIVE
         ) from window CurrentEvent // Nur aktuellstes Event betrachten. Erforderlich, da sonst vergangene und nicht mehr relevante Events mit aktuellstem ComplexTokenEvent in Zusammenhang geracht werden
-        // Nur aktuellsten und damit geltenden ComplexTokenEvent beachten
+        // Nur aktuellstes und damit geltendes ComplexTokenEvent beachten
        	$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
     then
     	// ComplextokenEvent mit Informationen anreichern
