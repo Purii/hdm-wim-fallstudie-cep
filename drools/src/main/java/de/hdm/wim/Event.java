@@ -4,8 +4,13 @@ package de.hdm.wim;
  * The Class Event.
  */
 public class Event {
+	
+	/** The token. */
 	private String token;
 	
+	/**
+	 * Instantiates a new event.
+	 */
 	public Event() {}
 	
 	/**
