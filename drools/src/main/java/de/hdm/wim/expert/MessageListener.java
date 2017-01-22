@@ -1,5 +1,5 @@
 /**
- * 
+ * DEPRECATED!
  */
 package de.hdm.wim.expert;
 
@@ -17,15 +17,15 @@ package de.hdm.wim.expert;
 public class MessageListener {
 
 	public static final String PROJECTDOCUMENTS = "projectdocuments";
-	
+
 	private String currentToken;
 	private String prevToken;
 	private boolean nextIsRelated = false;
 	private String requestedObject;
 	private String relation;
-	
+
 	public MessageListener() {}
-	
+
 	/**
 	 * Instantiates a new message listener.
 	 *
@@ -34,7 +34,7 @@ public class MessageListener {
 	public MessageListener(String currentToken) {
 		this.setCurrentToken(currentToken);
 	}
-	
+
 	/**
 	 * @return the currentToken
 	 */
@@ -50,7 +50,7 @@ public class MessageListener {
 	public void setCurrentToken(String currentToken) {
 		this.currentToken = currentToken;
 	}
-	
+
 	/**
 	 * Update current token.
 	 *
@@ -60,7 +60,7 @@ public class MessageListener {
 		this.setPrevToken(this.currentToken);
 		this.setCurrentToken(currentToken);
 	}
-	
+
 	/**
 	 * Sets the requested object.
 	 *
@@ -69,7 +69,7 @@ public class MessageListener {
 	public void setRequestedObject(String requestedObject) {
 		this.requestedObject = requestedObject;
 	}
-	
+
 	/**
 	 * Gets the requested object.
 	 *
@@ -78,7 +78,7 @@ public class MessageListener {
 	public String getRequestedObject() {
 		return this.requestedObject;
 	}
-	
+
 	/**
 	 * Sets if the next is related or not.
 	 *
@@ -87,7 +87,7 @@ public class MessageListener {
 	public void setNextIsRelated(boolean nextIsRelated) {
 		this.nextIsRelated = nextIsRelated;
 	}
-	
+
 	/**
 	 * Gets if the next is related or not.
 	 *
@@ -114,8 +114,8 @@ public class MessageListener {
 	public void setRelation(String relation) {
 		this.relation = relation;
 	}
-	
-	/** 
+
+	/**
 	 * custom toString method
 	 */
 	public String toString() {
