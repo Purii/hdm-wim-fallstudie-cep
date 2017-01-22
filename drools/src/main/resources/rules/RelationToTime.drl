@@ -6,8 +6,8 @@ import de.hdm.wim.ComplexTokenEvent
 import de.hdm.wim.Event
 import java.time.LocalTime;
 
-
 //declare any global variables here
+
 declare Event
 	@role(event)
 end
@@ -32,12 +32,17 @@ end
 rule "Identify relation to time"
 	no-loop
 	when
+	// wenn innerhalb des Fensters "LastEvents" der Token "at" fällt, wird
+	// geprüft ob darauf ein Token fällt der dem Regukären Ausdruck entspricht.
+	// Anschließend wird dann ein ComplexTokenEvent erstellt, dessen setRelatedToTime property
+	// die vereinheitlichte Zeit enthält.
 		$prevToken : Event(
 			token == "at"
 		) from window LastEvents
 		Event(
 			token matches "([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]",
 			$time : token,
+			// der aktuelle Token muss direkt auf den Vorgänger "at" folgen
 			this after $prevToken
 		)
 		$complexTokenEvent : ComplexTokenEvent() from window LastComplexTokenEvent
